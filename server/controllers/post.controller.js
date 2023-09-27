@@ -1,6 +1,8 @@
 const Post = require('../models/post.model')
 const jwt = require('jsonwebtoken')
 const { User } = require('../models/user.model')
+const File = require('../models/file.model')
+const { uploadFile } = require('./file.controller')
 const SECRET = process.env.SECRET
 
 module.exports = {

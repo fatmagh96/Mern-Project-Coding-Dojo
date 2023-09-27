@@ -110,12 +110,13 @@ export function AddBooking({ baseUrl }) {
                             <Input size="lg" label="photographer id" onChange={e => setBooking({ ...booking, photographer: e.target.value })}
                                 value={booking.photographer} />
                             <Select
-                                className="block w-full px-4 py-2 border border-gray-400 rounded-lg bg-white focus:outline-none focus:border-gray-500"
+                                // className="block w-full px-4 py-2 border border-gray-400 rounded-lg bg-white focus:outline-none focus:border-gray-500"
+                                variant="outlined"
                                 label="Type of Event"
                                 onChange={(v) => setBooking({ ...booking, category: v })}
                                 value={booking.category}
                             >   
-                                <Option value="">Choose a category for your event</Option>
+                                {/* <Option value="">Choose a category for your event</Option> */}
                                 <Option value="Party">Party</Option>
                                 <Option value="Portrait">Portrait</Option>
                                 <Option value="Wedding">Wedding</Option>

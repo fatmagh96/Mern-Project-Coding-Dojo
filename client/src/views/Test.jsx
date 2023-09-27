@@ -24,9 +24,9 @@ const Test = (props) => {
   country.sort()
 
   const handleCountry = (e) => {
-    // console.log(e);
-    setCountry(e.target.value)
-    let states = data.filter(state=> state.country === e.target.value)
+    console.log(e);
+    setCountry(e)
+    let states = data.filter(state=> state.country === e)
     states = [...new Set(states.map(item=>item.subcountry))];
     states.sort();
     setState(states)
@@ -41,19 +41,19 @@ const Test = (props) => {
   return (
     <div className='flex flex-col items-center justify-center mt-10'>
         <h1 className='mb-10'>Hello World</h1>
-        {/* <Select variant="standard" label="Country" color='blue-gray' onChange={handleCountry} value={getCountry} >
+        <Select variant="standard" label="Country" color='blue-gray' onChange={e=>{setCountry(e);handleCountry(e);}} value={getCountry} >
 
               <Option>Material Tailwind HTML</Option>
-              {country.map(item=><Option key={item} value={item} >{item}</Option>)}
+              {country.map(item=><Option key={item} value={item.toString()} >{item}</Option>)}
                             
-        </Select> */}
-        <div>
+        </Select>
+        {/* <div>
           <label htmlFor="">Country : </label>
           <select name="" id="" onChange={(e)=>handleCountry(e)} value={getCountry}>
             {country.map(items=><option key={items} value={getCountry}>{items}</option>)}
           </select>
 
-        </div>
+        </div> */}
         
         <div className='mt-5'>
 

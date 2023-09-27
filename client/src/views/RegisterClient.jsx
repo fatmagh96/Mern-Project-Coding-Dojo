@@ -16,7 +16,7 @@ import axios from 'axios';
 import '../index.css'
 import { useNavigate } from 'react-router-dom';
 
-const RegisterPhotographer = ({ baseUrl }) => {
+const RegisterPhotographer = ({ baseUrl, setIsLogged }) => {
 
     const [client, setClient] = useState({
         firstName: "",
@@ -43,6 +43,7 @@ const RegisterPhotographer = ({ baseUrl }) => {
         axios.post(baseUrl + 'register', newUser, { withCredentials: true })
             .then(serverResponse => {
                 console.log(serverResponse)
+                setIsLogged(true)
                 navigate('/client')
             })
             .catch(error => {

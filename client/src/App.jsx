@@ -43,7 +43,7 @@ function App() {
       .then((res) => {
         console.log(res.data,'++++');
         setLoggedUser(res.data)
-        //setIsLogged(true)
+        setIsLogged(true)
       })
       .catch((err) => {
         console.log(err);
@@ -60,8 +60,8 @@ function App() {
           <Route path='/' element={<Home baseUrl={baseUrl} />} />
           <Route path='/signin' element={<Signin baseUrl={baseUrl} setLoggedUser={setLoggedUser} setIsLogged={(v)=>setIsLogged(v)}/>}/>
           <Route path='/register' element={<SignUp baseUrl={baseUrl}/>}/>
-          <Route path='/register/photographer' element={<RegisterPhotographer baseUrl={baseUrl} setLoggedUser={setLoggedUser}/>}/>
-          <Route path='/register/client' element={<RegisterClient baseUrl={baseUrl} setLoggedUser={setLoggedUser}/>}/>
+          <Route path='/register/photographer' element={<RegisterPhotographer baseUrl={baseUrl} setLoggedUser={setLoggedUser} setIsLogged={(v)=>setIsLogged(v)}/>}/>
+          <Route path='/register/client' element={<RegisterClient baseUrl={baseUrl} setLoggedUser={setLoggedUser} setIsLogged={(v)=>setIsLogged(v)}/>}/>
           <Route path='/photographer' element={<PhotographerDashboard baseUrl={baseUrl}/>}/>
           <Route path='/client' element={<AddBooking baseUrl={baseUrl}/>}/>
           <Route path='/categories/:category' element={<OneCategory baseUrl={baseUrl}/>}/>

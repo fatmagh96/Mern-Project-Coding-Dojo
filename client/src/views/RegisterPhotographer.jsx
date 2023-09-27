@@ -16,7 +16,7 @@ import axios from 'axios';
 import '../index.css'
 import { useNavigate } from 'react-router-dom';
 
-const RegisterPhotographer = ({ baseUrl, setLoggedUser }) => {
+const RegisterPhotographer = ({ baseUrl, setLoggedUser, setIsLogged }) => {
     const [user, setUser] = useState({
         firstName: "",
         lastName: "",
@@ -44,6 +44,7 @@ const RegisterPhotographer = ({ baseUrl, setLoggedUser }) => {
             .then(serverResponse => {
                 console.log(serverResponse)
                 setLoggedUser(newUser)
+                setIsLogged(true)
                 navigate('/photographer')
             })
             .catch(error => {

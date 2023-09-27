@@ -1,10 +1,11 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const NavBar = (props) => {
   return (
     <div>
         <nav className='flex justify-between p-6 items-center px-3 border-b-2 sticky top-0 bg-white'>
-            <h1 className='text-xl ml-3 font-burtons '>DreamCatcher</h1>
+            <Link to={'/'} className='text-xl ml-3 font-burtons '>DreamCatcher</Link>
             <ul className='flex gap-6 mr-4 text-xl'>
                 {/* <li className='font-bebas'>Home</li> */}
                 <li>

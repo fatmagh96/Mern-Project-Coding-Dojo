@@ -43,7 +43,7 @@ const RegisterPhotographer = ({ baseUrl }) => {
         axios.post(baseUrl + 'register', newUser, { withCredentials: true })
             .then(serverResponse => {
                 console.log(serverResponse)
-                navigate('/client/profile')
+                navigate('/client')
             })
             .catch(error => {
                 console.log(error)

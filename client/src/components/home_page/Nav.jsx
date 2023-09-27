@@ -5,10 +5,13 @@ import {
     Typography,
     Button,
     IconButton,
-    Card,
+    CollapseProps,
 } from "@material-tailwind/react";
+import { Link } from "react-router-dom";
 
-export function StickyNavbar() {
+export function StickyNavbar({isLogged, logout}) {
+
+    console.log(isLogged,'😡😡😡😡');
     const [openNav, setOpenNav] = React.useState(false);
 
     React.useEffect(() => {
@@ -26,40 +29,11 @@ export function StickyNavbar() {
                 color="blue-gray"
                 className="p-1 font-normal"
             >
-                <a href="#" className="flex items-center">
-                    Pages
-                </a>
+                {/* <a href="#" className="flex items-center">
+                    
+                </a> */}
             </Typography>
-            {/* <Typography
-                as="li"
-                variant="small"
-                color="blue-gray"
-                className="p-1 font-normal"
-            >
-                <a href="#" className="flex items-center">
-                    Account
-                </a>
-            </Typography>
-            <Typography
-                as="li"
-                variant="small"
-                color="blue-gray"
-                className="p-1 font-normal"
-            >
-                <a href="#" className="flex items-center">
-                    Blocks
-                </a>
-            </Typography>
-            <Typography
-                as="li"
-                variant="small"
-                color="blue-gray"
-                className="p-1 font-normal"
-            >
-                <a href="#" className="flex items-center">
-                    Docs
-                </a>
-            </Typography> */}
+            
         </ul>
     );
 
@@ -70,27 +44,44 @@ export function StickyNavbar() {
                     <Typography
                         as="a"
                         href="#"
-                        className="mr-4 cursor-pointer py-1.5 font-bold "
+                        className="mr-4 cursor-pointer  font-bold  text-gray-800"
+                        variant="h4"
                     >
-                        DreamCatcher
+                       <Link to={'/'}>DreamCatcher</Link>
                     </Typography>
                     <div className="flex items-center gap-4">
-                        <div className="mr-6 hidden lg:block">{navList}</div>
-                        <Button
-                            variant="gradient"
-                            size="sm"
-                            className="hidden lg:inline-block"
-                        >
-                            <span>Login</span>
-                        </Button>
-                        <Button
-                            variant="gradient"
-                            size="sm"
-                            className="hidden lg:inline-block"
-                        >
-                            <span>Sign Up</span>
-                        </Button>
-                        <IconButton
+                        {/* <div className="mr-6 hidden lg:block">{navList}</div> */}
+                        {isLogged?
+                            <>
+                            <Button
+                                variant="gradient"
+                                size="sm"
+                                className="hidden lg:inline-block" onClick={logout}>
+                                Log out
+                        </Button></>
+                        :
+
+                        <>
+                            <Button
+                                variant="gradient"
+                                size="sm"
+                                className="hidden lg:inline-block"
+                            >
+                                <Link to={'/signin'}>Login</Link>
+                            </Button>
+                            <Button
+                                variant="gradient"
+                                size="sm"
+                                className="hidden lg:inline-block"
+                            >
+                                <Link to={'/register'}>Sign Up</Link>
+                            </Button> 
+                        </>
+                        
+                        
+                    
+                    }
+                        {/* <IconButton
                             variant="text"
                             className="ml-auto h-6 w-6 text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden"
                             ripple={false}
@@ -126,13 +117,16 @@ export function StickyNavbar() {
                                     />
                                 </svg>
                             )}
-                        </IconButton>
+                        </IconButton> */}
                     </div>
                 </div>
                 <MobileNav open={openNav}>
                     {navList}
                     <Button variant="gradient" size="sm" fullWidth className="mb-2 ">
-                        <span>Buy Now</span>
+                        <Link to={'/signin'}>Login</Link>
+                    </Button>
+                    <Button variant="gradient" size="sm" fullWidth className="mb-2 ">
+                        <Link to={'/register'}>Sign Up</Link>
                     </Button>
                 </MobileNav>
             </Navbar>

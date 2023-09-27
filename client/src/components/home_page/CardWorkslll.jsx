@@ -8,9 +8,9 @@ import {
     Tooltip,
 } from "@material-tailwind/react";
 
-export function BlogCardlll() {
+export function BlogCardIII() {
     return (
-        <Card className="max-w-[24rem] overflow-hidden">
+        <Card className="max-w-[24rem] overflow-hidden shadow-none">
             <CardHeader
                 floated={false}
                 shadow={false}
@@ -20,11 +20,11 @@ export function BlogCardlll() {
                 <img
                     src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80"
                     alt="ui/ux review check"
-                    className="p-4 cursor-pointer  "
+                    className="p-4 h-[300px] w-[300px] rounded-full object-cover object-center ms-3 text"
                 />
             </CardHeader>
             <CardBody>
-                <Typography variant="h4" color="blue-gray">
+                <Typography className="text-center" variant="h4" color="blue-gray">
                 Receive Photos
                 </Typography>
                 <Typography variant="lead" color="gray" className="mt-3 font-normal">

@@ -13,7 +13,7 @@ import HowItWorks from '../components/home_page/HowItWorks'
 const Home = () => {
     return (
         <>
-            <StickyNavbar/>
+            {/* <StickyNavbar/> */}
             {/* <CarouselCustomNavigation/> */}
             <CarouselWithContent />
 

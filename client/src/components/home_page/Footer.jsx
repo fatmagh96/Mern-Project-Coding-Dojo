@@ -20,17 +20,17 @@ const currentYear = new Date().getFullYear();
 export function FooterWithSocialLinks() {
     return (
         <footer className="relative w-full border-t border-gray ">
-            <div className="mx-auto mt-5 w-full max-w-10xl px-8">
-                <div className="grid grid-cols-1 justify-between gap-4 md:grid-cols-2">
-                    <Typography variant="h5" className="mb-6 ">
-                        Material Tailwind
+            <div className="mx-auto w-full max-w-10xl">
+                <div className="grid grid-cols-1 justify-between gap-4 md:grid-cols-2 bg-blue-gray-100 rounded-ms">
+                    <Typography variant="h3" className="mb-6 p-6 " color="blue-gray">
+                        DreamCatcher
                     </Typography>
-                    <div className="grid grid-cols-3 justify-between gap-4">
+                    <div className="grid grid-cols-3 justify-between gap-4 p-6 " >
                         {LINKS.map(({ title, items }) => (
                             <ul key={title}>
                                 <Typography
                                     variant="small"
-                                    color="blue-gray"
+                                    color="black"
                                     className="mb-3 font-medium opacity-40"
                                 >
                                     {title}
@@ -51,13 +51,13 @@ export function FooterWithSocialLinks() {
                         ))}
                     </div>
                 </div>
-                <div className="mt-12 flex w-full flex-col items-center justify-center border-t border-blue-gray-50 py-4 md:flex-row md:justify-between">
+                <div className=" flex w-full flex-col items-center justify-center border-t border-blue-gray-50 py-4 md:flex-row md:justify-between p-6">
                     <Typography
                         variant="small"
-                        className="mb-4 text-center font-normal text-blue-gray-900 md:mb-0"
+                        className="mb-4 text-center font-normal text-blue-gray-900 md:mb-0 "
                     >
-                        &copy; {currentYear} <a href="https://DreamCatcher.com/">DreamCatcher</a>. All
-                        Rights Reserved.
+                        &copy; {currentYear} <a href="https://DreamCatcher.com/">DreamCatcher</a>. 
+                        All Rights Reserved.
                     </Typography>
                     <div className="flex gap-4 text-blue-gray-900 sm:justify-center">
                         <Typography as="a" href="#" className="opacity-80 transition-opacity hover:opacity-100">

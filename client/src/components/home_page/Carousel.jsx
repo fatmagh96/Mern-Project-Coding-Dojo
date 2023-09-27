@@ -47,7 +47,7 @@ export function CarouselWithContent() {
             <div className="absolute mt-70 inset-0 grid h-full w-full place-items-center">
                 <div className="w-3/4 text-center md:w-2/4 ">
                     <div className="flex justify-center gap-1 ">
-                        <div className="relative flex w-full gap-2 md:w-max ">
+                        <div className="relative flex w-full gap-2 md:w-max backdrop-filter backdrop-blur-md bg-opacity-80">
                             <Input
                                 
                                 color="white"
@@ -56,7 +56,7 @@ export function CarouselWithContent() {
                                 className="pr-20 rounded-m ;"
                                 containerProps={{className: "min-w-[500px] min-h-[40px]   " }}
                             />
-                            <Button size="m" className="!absolute right-1   rounded-m " color="white" >
+                            <Button size="m" className="!absolute right-0 rounded-m " color="white" >
                                 Search
                             </Button>
                         </div>

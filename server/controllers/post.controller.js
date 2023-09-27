@@ -72,17 +72,27 @@ module.exports = {
 
     create: async (req, res) => {
         const userToken = req.cookies.userToken;
-        const { id: userId } = jwt.verify(userToken, SECRET)
+        const { id: userId } = jwt.verify(userToken, SECRET);
+      
         try {
-            const newPost = await Post.create({ ...req.body, postedBy: userId })
-            await User.findByIdAndUpdate(userId, { $push: { posts: newPost._id } })
-            res.status(201).json(newPost)
+        //   const newPost = await Post.create({ ...req.body, postedBy: userId });
+          const newPost = await Post.create(req.body);
+      
+          // Handle the single uploaded image
+          if (req.file) {
+            const imagePath = 'http://localhost:8000/images/' + req.file.filename;
+            const newFile = await File.create({ path: imagePath, post: newPost._id });
+            await Post.findByIdAndUpdate(newPost._id, { $push: { images: newFile._id } });
+          }
+      
+        //   await User.findByIdAndUpdate(userId, { $push: { posts: newPost._id } });
+      
+          res.status(201).json(newPost);
         } catch (error) {
-            console.log("DATABASE Create :", error);
-            res.status(400).json(error.errors)
-
+          console.log("DATABASE Create:", error);
+          res.status(400).json(error.errors);
         }
-    },
+      },
 
     update: async (req, res) => {
         // Post.findByIdAndUpdate(req.params.id, req.body, {new:true, runValidators:true})

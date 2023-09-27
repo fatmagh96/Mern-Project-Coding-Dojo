@@ -30,7 +30,9 @@ function App() {
     console.log("logout");
     axios.post(baseUrl+'logout',{},{withCredentials:true})
     .then(serverResponse=>{
+
         console.log(serverResponse);
+        setIsLogged(false)
         navigate('/')
     })
     .catch(error=>console.log(error))
@@ -41,22 +43,22 @@ function App() {
       .then((res) => {
         console.log(res.data,'++++');
         setLoggedUser(res.data)
-        setIsLogged(true)
+        //setIsLogged(true)
       })
       .catch((err) => {
         console.log(err);
-        setIsLogged(false)
+        //setIsLogged(false)
       });
   }, [isLogged]);
-
+  console.log("IS LOGGED", isLogged)
   return (
     <>
      <UserContext.Provider value={loggedUser}>
-        <StickyNavbar isLogged={isLogged} logout={logout}/>
+        <StickyNavbar baseUrl={baseUrl} isLogged={isLogged} logout={logout}/>
         <Routes>
 
           <Route path='/' element={<Home baseUrl={baseUrl} />} />
-          <Route path='/signin' element={<Signin baseUrl={baseUrl} setLoggedUser={setLoggedUser}/>}/>
+          <Route path='/signin' element={<Signin baseUrl={baseUrl} setLoggedUser={setLoggedUser} setIsLogged={(v)=>setIsLogged(v)}/>}/>
           <Route path='/register' element={<SignUp baseUrl={baseUrl}/>}/>
           <Route path='/register/photographer' element={<RegisterPhotographer baseUrl={baseUrl} setLoggedUser={setLoggedUser}/>}/>
           <Route path='/register/client' element={<RegisterClient baseUrl={baseUrl} setLoggedUser={setLoggedUser}/>}/>

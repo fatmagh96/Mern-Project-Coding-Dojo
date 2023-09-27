@@ -9,6 +9,7 @@ import ImageCard from '../components/photographer/ImageCard'
 import { UserContext } from '../context/UserContext'
 import { Avatar } from "@material-tailwind/react";
 import axios from 'axios'
+import BookingsTable from '../components/photographer/BookingsTableTest'
 
 // import BackgroundBlogCard from '../components/photographer/BackgroundBlogCard'
 // import '../components/photographer/photographer.css'
@@ -57,8 +58,9 @@ const PhotographerDashboard = ({baseUrl}) => {
                 </div>
                 <fieldset className='border-2 border-black mx-3 p-4'>
                   <legend>cards</legend>
-                  <h3 className='text-xl text-center mb-4'>All Photos</h3>
-                  <ImageCard/>
+                  <h3 className='text-xl text-center mb-4'>All Bookings</h3>
+                  {/* <ImageCard/> */}
+                  <BookingsTable baseUrl={baseUrl}/>
                 </fieldset>
             </fieldset>
         </div>

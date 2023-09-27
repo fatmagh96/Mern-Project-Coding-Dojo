@@ -15,7 +15,7 @@ import '../index.css'
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-const Signin = ({baseUrl}) => {
+const Signin = ({baseUrl, setIsLogged}) => {
     
     const [user, setUser] = useState({email:"",password:""})
     const [errorLog, setErrorLog] = useState({ message: ""})
@@ -29,8 +29,10 @@ const Signin = ({baseUrl}) => {
             console.log(serverResponse)
             if (serverResponse.data.user.role == "c"){
                 navigate('/client')
+                setIsLogged(true)
             } else if (serverResponse.data.user.role == "p"){
                 navigate('/photographer')
+                setIsLogged(true)
             }
         })
         .catch(error => {
@@ -62,7 +64,8 @@ const Signin = ({baseUrl}) => {
                         Sign in
                     </div>
                     <div className='flex flex-col gap-5 mt-10'>
-                    <form onSubmit={e=>login(e,user)}>
+                    <form onSubmit={e=>{
+                        login(e,user)}}>
 
                             {errorLog.message && <span className='text-red-700 text-sm'> {errorLog.message}</span>}
                             <div className='my-4'>

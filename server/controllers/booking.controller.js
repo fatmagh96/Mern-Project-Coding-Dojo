@@ -23,7 +23,7 @@ module.exports = {
         const {id:userId} = jwt.verify(userToken, SECRET)
 
         try {
-            const response = await Booking.find({photographer:userId, status: req.params.status}).populate("photographer")
+            const response = await Booking.find({photographer:userId, status: req.params.status}).populate("photographer").populate("client")
             res.status(200).json(response)
         }catch(error){
             console.log("DATABASE ERROR  :", error);

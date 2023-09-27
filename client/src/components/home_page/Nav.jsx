@@ -1,4 +1,5 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
+import axios from "axios";
 import {
     Navbar,
     MobileNav,
@@ -9,7 +10,22 @@ import {
 } from "@material-tailwind/react";
 import { Link } from "react-router-dom";
 
-export function StickyNavbar({isLogged, logout}) {
+export function StickyNavbar({baseUrl, isLogged, logout}) {
+
+    // const [isLogged, setIsLogged] = useState(false)
+
+    // useEffect(() => {
+    //     axios.get(baseUrl + 'loggedUser', { withCredentials: true })
+    //       .then((res) => {
+    //         console.log(res.data,'++++');
+    //         setLoggedUser(res.data)
+    //         setIsLogged(true)
+    //       })
+    //       .catch((err) => {
+    //         console.log(err);
+    //         setIsLogged(false)
+    //       });
+    //   }, []);
 
     console.log(isLogged,'😡😡😡😡');
     const [openNav, setOpenNav] = React.useState(false);

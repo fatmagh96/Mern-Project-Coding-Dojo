@@ -8,7 +8,7 @@ module.exports = app => {
     app.get('/api/posts/categories/:category', postController.findAllByCategory)
     // app.get('/api/posts/users/:userId' ,postController.findByUserId)
     app.get('/api/posts/:id', postController.findOne)
-    app.post('/api/posts', postController.create)
+    // app.post('/api/posts', postController.create)
     app.put('/api/posts/:id', postController.update)
     app.delete('/api/posts/:id', postController.delete)
 }

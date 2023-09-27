@@ -7,9 +7,10 @@ const PostSchema  = new mongoose.Schema({
         enum:["Party","Portrait","Wedding","Food","Product","Conference"],
         required:true
     },
-    image:{
-        type:String,
-        required:true
+    images:
+    {
+        type: [mongoose.Schema.Types.ObjectId],
+        ref:'File',required:true
     },
     likes: [
         {

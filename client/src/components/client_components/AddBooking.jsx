@@ -109,20 +109,20 @@ export function AddBooking({ baseUrl }) {
                             {/* <Input size="lg" label="client id" /> */}
                             <Input size="lg" label="photographer id" onChange={e => setBooking({ ...booking, photographer: e.target.value })}
                                 value={booking.photographer} />
-                            <select
+                            <Select
                                 className="block w-full px-4 py-2 border border-gray-400 rounded-lg bg-white focus:outline-none focus:border-gray-500"
                                 label="Type of Event"
-                                onChange={(e) => setBooking({ ...booking, category: e.target.value })}
+                                onChange={(v) => setBooking({ ...booking, category: v })}
                                 value={booking.category}
                             >   
-                                <option value="">Choose a category for your event</option>
-                                <option value="Party">Party</option>
-                                <option value="Portrait">Portrait</option>
-                                <option value="Wedding">Wedding</option>
-                                <option value="Food">Food</option>
-                                <option value="Product">Product</option>
-                                <option value="Conference">Conference</option>
-                            </select>
+                                <Option value="">Choose a category for your event</Option>
+                                <Option value="Party">Party</Option>
+                                <Option value="Portrait">Portrait</Option>
+                                <Option value="Wedding">Wedding</Option>
+                                <Option value="Food">Food</Option>
+                                <Option value="Product">Product</Option>
+                                <Option value="Conference">Conference</Option>
+                            </Select>
                             <Input size="lg" label="country"
                                 onChange={e => setBooking({ ...booking, address: { ...booking.address, country: e.target.value } })}
                                 value={booking.address.country} />

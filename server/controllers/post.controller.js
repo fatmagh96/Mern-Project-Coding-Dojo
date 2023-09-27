@@ -35,7 +35,7 @@ module.exports = {
         const { id: userId } = jwt.verify(userToken, SECRET)
 
         try {
-            const response = await Post.find({ postedBy: userId }).populate("postedBy")
+            const response = await Post.find({ postedBy: userId }).populate("postedBy").populate('images')
             res.status(200).json(response)
         } catch (error) {
             console.log("DATABASE ERROR  :", error);
@@ -77,8 +77,8 @@ module.exports = {
         const { id: userId } = jwt.verify(userToken, SECRET);
       
         try {
-        //   const newPost = await Post.create({ ...req.body, postedBy: userId });
-          const newPost = await Post.create(req.body);
+          const newPost = await Post.create({ ...req.body, postedBy: userId });
+        //   const newPost = await Post.create(userId,req.body);
       
           // Handle the single uploaded image
           if (req.file) {

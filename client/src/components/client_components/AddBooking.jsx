@@ -33,6 +33,7 @@ export function AddBooking({ baseUrl }) {
                 console.log(serverResponse.data);
                 console.log('helloooo??', serverResponse.data._id);
                 setLoggedUser(serverResponse.data)
+                console.log("logggged",user)
                 // setJobs(serverResponse.data)
                 // setDeleted(false)
             })
@@ -43,9 +44,14 @@ export function AddBooking({ baseUrl }) {
     }, [])
 
     const categories = ["Party", "Portrait", "Wedding", "Food", "Product", "Conference", "Sports", "Fashion", "Family"]
+    console.log('**************', user._id);
+    const user_copie = {...user}
+    console.log("user_copieaaaaaaaa",user_copie)
+    const id = user._id
 
+    console.log(id);
     const [booking, setBooking] = useState({
-        client: user._id,
+        client: user_copie._id,
         photographer: "",
         category: "",
         address: {
@@ -55,6 +61,9 @@ export function AddBooking({ baseUrl }) {
         dateTime: "",
         duration: 1
     })
+    
+
+    console.log('-----', booking);
     const [errors, setErrors] = useState({
         client: "",
         photographer: "",
@@ -66,13 +75,19 @@ export function AddBooking({ baseUrl }) {
         dateTime: "",
         duration: ""
     })
+    console.log(baseUrl + 'bookings')
+
+
     const createBooking = (e) => {
         e.preventDefault()
+        console.log(booking,'😡😡😡');
         axios.post(baseUrl + 'bookings', booking, { withCredentials: true })
             .then(serverResponse => {
-                console.log(serverResponse.data);
-                setBooking(booking)
-                // navigate(`/jobs/${serverResponse.data._id}`)
+                console.log('data',serverResponse.data);
+                setBooking({...booking, client:user_copie._id})
+                // setBooking(booking)
+              
+                
             })
             .catch(error => {
                 console.log(error)
@@ -99,6 +114,8 @@ export function AddBooking({ baseUrl }) {
             <Button onClick={handleOpen} variant="gradient">
                 Book
             </Button>
+
+            {/* MODAL */}
             <Dialog open={open} handler={handleOpen}>
                 <DialogHeader>Book your photographer.</DialogHeader>
                 <DialogBody divider>
@@ -106,49 +123,64 @@ export function AddBooking({ baseUrl }) {
                     <form className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96" onSubmit={e => createBooking(e)}>
 
                         <div className="mb-4 flex flex-col gap-6">
-                            {/* <Input size="lg" label="client id" /> */}
-                            <Input size="lg" label="photographer id" onChange={e => setBooking({ ...booking, photographer: e.target.value })}
+                            {/* <input size="lg" label="client id" type="hidden" value={{...booking,client:user._id}} /> */}
+                            <Input size="lg" label="photographer id" onChange={e => setBooking({ ...booking, client:user_copie._id, photographer: e.target.value })}
                                 value={booking.photographer} />
-                            <Select
+                            {/* <Select
                                 // className="block w-full px-4 py-2 border border-gray-400 rounded-lg bg-white focus:outline-none focus:border-gray-500"
                                 variant="outlined"
                                 label="Type of Event"
                                 onChange={(v) => setBooking({ ...booking, category: v })}
                                 value={booking.category}
                             >   
-                                {/* <Option value="">Choose a category for your event</Option> */}
+                                
                                 <Option value="Party">Party</Option>
                                 <Option value="Portrait">Portrait</Option>
                                 <Option value="Wedding">Wedding</Option>
                                 <Option value="Food">Food</Option>
                                 <Option value="Product">Product</Option>
                                 <Option value="Conference">Conference</Option>
-                            </Select>
+                            </Select> */}
+                            <select
+                                className="block w-full px-4 py-2 border border-gray-400 rounded-lg bg-white focus:outline-none focus:border-gray-500"
+                                // variant="outlined"
+                                label="Type of Event"
+                                onChange={(e) => setBooking({ ...booking,client:user_copie._id, category: e.target.value })}
+                                value={booking.category}
+                            >   
+                                <option value="">Choose a category for your event</option>
+                                <option value="Party">Party</option>
+                                <option value="Portrait">Portrait</option>
+                                <option value="Wedding">Wedding</option>
+                                <option value="Food">Food</option>
+                                <option value="Product">Product</option>
+                                <option value="Conference">Conference</option>
+                            </select>
                             <Input size="lg" label="country"
-                                onChange={e => setBooking({ ...booking, address: { ...booking.address, country: e.target.value } })}
+                                onChange={e => setBooking({ ...booking,client:user_copie._id, address: { ...booking.address, country: e.target.value } })}
                                 value={booking.address.country} />
-                            <Input size="lg" label="city" onChange={e => setBooking({ ...booking, address: { ...booking.address, city: e.target.value } })}
+                            <Input size="lg" label="city" onChange={e => setBooking({ ...booking,client:user_copie._id, address: { ...booking.address, city: e.target.value } })}
                                 value={booking.address.city} />
                             <label for="birthdaytime" class="block text-gray-700 font-bold mb-2">When (date and time):</label>
                             <input type="datetime-local" id="birthdaytime" name="birthdaytime" class="border border-gray-400 rounded-lg py-2 px-3 w-full focus:outline-none  focus:border-black"
                                 min={currentDate} placeholder="datetime"
-                                onChange={e => setBooking({ ...booking, dateTime: e.target.value })}
+                                onChange={e => setBooking({ ...booking,client:user_copie._id, dateTime: e.target.value })}
                                 value={booking.dateTime} />
                             {/* <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mt-4 rounded">Submit</button> */}
                             <Input size="lg" label="Duration (in hours)" type="number" min={1} max={5}
-                                onChange={e => setBooking({ ...booking, duration: e.target.value })}
+                                onChange={e => setBooking({ ...booking,client:user_copie._id, duration: e.target.value })}
                                 value={booking.duration} />
 
 
                                 <div className="flex justify-end">
-                                    <Button
+                                    {/* <Button
                                         variant="text"
                                         color="red"
                                         onClick={handleOpen}
                                         className="mr-1"
                                     >
                                         <span>Cancel</span>
-                                    </Button>
+                                    </Button> */}
                                     <Button variant="gradient" color="green">
                                         <span>Confirm</span>
                                     </Button>
@@ -161,8 +193,8 @@ export function AddBooking({ baseUrl }) {
 
                     </form>
                 </DialogBody>
-                {/* <DialogFooter>
-                    <Button
+                {/* <DialogFooter> */}
+                    {/* <Button
                         variant="text"
                         color="red"
                         onClick={handleOpen}
@@ -172,8 +204,9 @@ export function AddBooking({ baseUrl }) {
                     </Button>
                     <Button variant="gradient" color="green" onClick={handleOpen}>
                         <span>Confirm</span>
-                    </Button>
-                </DialogFooter> */}
+                    </Button> */}
+                    {/* {JSON.stringify(booking)} */}
+                {/* </DialogFooter> */}
             </Dialog>
         </>
     );

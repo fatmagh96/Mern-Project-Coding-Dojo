@@ -17,6 +17,7 @@ import { UserContext } from "./context/UserContext";
 import OneCategory from './views/OneCategory'
 import { StickyNavbar } from './components/home_page/Nav'
 import { AddBooking } from './components/client_components/AddBooking'
+import AddBookingTwo from './components/client_components/AddBookingTwo'
 
 
 function App() {
@@ -63,7 +64,7 @@ function App() {
           <Route path='/register/photographer' element={<RegisterPhotographer baseUrl={baseUrl} setLoggedUser={setLoggedUser} setIsLogged={(v)=>setIsLogged(v)}/>}/>
           <Route path='/register/client' element={<RegisterClient baseUrl={baseUrl} setLoggedUser={setLoggedUser} setIsLogged={(v)=>setIsLogged(v)}/>}/>
           <Route path='/photographer' element={<PhotographerDashboard baseUrl={baseUrl}/>}/>
-          <Route path='/client' element={<AddBooking baseUrl={baseUrl}/>}/>
+          <Route path='/client' element={<AddBookingTwo baseUrl={baseUrl}/>}/>
           <Route path='/categories/:category' element={<OneCategory baseUrl={baseUrl}/>}/>
 
         </Routes>

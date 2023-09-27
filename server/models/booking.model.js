@@ -14,7 +14,7 @@ const BookingSchema  = new mongoose.Schema({
     },
     category:{
         type:String,
-        enum:["Party","Portrait","Wedding","Food","Product","Conference"],
+        enum:["Party","Portrait","Wedding","Food","Product","Conference","Sports","Fashion","Family"],
         required:[true, " 🛑🛑🛑"]
     },
     status:{

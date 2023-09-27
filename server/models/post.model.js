@@ -4,7 +4,7 @@ const mongoose  = require('mongoose')
 const PostSchema  = new mongoose.Schema({
     category:{
         type:String,
-        enum:["Party","Portrait","Wedding","Food","Product","Conference"],
+        enum:["Party","Portrait","Wedding","Food","Product","Conference","Sports","Fashion","Family"],
         required:true
     },
     images:

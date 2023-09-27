@@ -5,9 +5,9 @@ import axios from 'axios'
 
 const Test = (props) => {
   const [data, setData] = useState([])
-  const [getCountry, setCountry] = useState()
+  const [getCountry, setCountry] = useState("")
   const [getState, setState] = useState([])
-  const [selectedState, setSelectedState] = useState()
+  const [selectedState, setSelectedState] = useState("")
 
   useEffect(()=>{
     axios.get("https://pkgstore.datahub.io/core/world-cities/world-cities_json/data/5b3dd46ad10990bca47b04b4739a02ba/world-cities_json.json")
@@ -37,14 +37,15 @@ const Test = (props) => {
   const handleState = (e) =>{
     
   }
+  console.log(getCountry);
 
   return (
     <div className='flex flex-col items-center justify-center mt-10'>
         <h1 className='mb-10'>Hello World</h1>
-        <Select variant="standard" label="Country" color='blue-gray' onChange={e=>{setCountry(e);handleCountry(e);}} value={getCountry} >
+        <Select variant="standard" label="Country" color='blue-gray' onChange={async (v)=>{await setCountry(v);console.log("++",v,"++")}} value={getCountry} >
 
               <Option>Material Tailwind HTML</Option>
-              {country.map(item=><Option key={item} value={item.toString()} >{item}</Option>)}
+              {country.map(item=><Option value={item} >{item}</Option>)}
                             
         </Select>
         {/* <div>

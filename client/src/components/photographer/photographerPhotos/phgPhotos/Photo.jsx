@@ -2,11 +2,9 @@ import {
     Card,
     CardHeader,
     CardBody,
-    Typography,
-    Avatar,
 } from "@material-tailwind/react";
 
-export function BackgroundBlogCardPhoto_I({avatar, phg, bg, handleOpen}) {
+export function PhotoPhg({bg, handleOpen}) {
     const bg_class=`group-hover:scale-110 ease-out duration-300 absolute inset-0 m-0 h-full w-full bg-[url('${bg}')] bg-cover bg-center`
     
     return (
@@ -23,19 +21,6 @@ export function BackgroundBlogCardPhoto_I({avatar, phg, bg, handleOpen}) {
                 <div className="absolute inset-0 h-full w-full bg  group-hover:bg-gradient-to-t from-black/30 via-black/30 " />
             </CardHeader>
             <CardBody className="py-14 px-6 md:px-12 group-hover overflow-hidden aspect-video cursor-pointer relative group">
-    <div className="gap-2 group-hover:opacity-100 group-hover:translate-y-8 translate-y-20 pb-10 transform transition duration-200 ease-in-out flex items-center">
-        
-        <Avatar
-            size="sm"
-            variant="circular"
-            alt="tania andrew"
-            className="border-2 border-white"
-            src={avatar}
-        />
-        <Typography className="text-white-400 font-light text-s text-white text-center">
-            {phg}
-        </Typography>
-    </div>
 </CardBody>
 
         </Card>

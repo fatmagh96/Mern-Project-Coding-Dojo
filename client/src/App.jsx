@@ -18,6 +18,7 @@ import OneCategory from './views/OneCategory'
 import { StickyNavbar } from './components/home_page/Nav'
 import { AddBooking } from './components/client_components/AddBooking'
 import AddBookingTwo from './components/client_components/AddBookingTwo'
+import PhotographerPage from './views/PhotographerPage'
 
 
 function App() {
@@ -69,7 +70,7 @@ function App() {
 
         </Routes>
 
-
+          {/* <PhotographerPage/> */}
           {/* <PhotographerDashboard/> */}
           {/* <Example/> */}
           {/* <LogIn/> */}

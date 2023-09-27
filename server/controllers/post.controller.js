@@ -21,7 +21,7 @@ module.exports = {
 
     findAllByCategory: async (req, res) => {
         try {
-            const response = await Post.find({category:req.params.category}).populate('postedBy').populate('likes')
+            const response = await Post.find({category:req.params.category}).populate('postedBy').populate('likes').populate('images')
             res.status(200).json(response)
         } catch (error) {
             console.log("DATABASE ERROR  :", error);

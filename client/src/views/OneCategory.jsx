@@ -15,7 +15,7 @@ const OneCategory = () => {
             <ImgWithBlurredCaption category={category}/>
             {/* <CoverImage/> */}
             {/* <ExampleComponent/> */}
-            <AllPhotos/>
+            <AllPhotos category={category}/>
             <FooterWithSocialLinks/>
         </>
     )

@@ -1,25 +1,9 @@
-import React, { useEffect, useState } from 'react'
-import {  BackgroundBlogCardPhoto_I } from './photos/Photo_I'
-
-import TestImg from './photos/TestImg';
-import axios from 'axios';
+import React from 'react'
+import { PhotoPhg } from './photographerPhotos/phgPhotos/Photo';
+import HandelPhoto from './photographerPhotos/phgPhotos/HandelPhoto';
 
 // import { IconButton } from "@material-tailwind/react";
-const AllPhotos = ({category}) => {
-    const [photos, setPhotos] = useState([])
-    useEffect(()=>{
-            axios.get('http://localhost:8000/api/posts/categories/'+category)
-            .then(serverResponse=>{
-                console.log(serverResponse.data,'😎😎😎😎')
-                // setPhotos()
-            }
-
-            )
-            .catch(error=>{
-                console.log(error)
-            })
-    },[])
-
+const PhotographerPage_Main = () => {
     const categories = [
         {
             avatar:"https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1480&q=80",
@@ -62,9 +46,6 @@ const AllPhotos = ({category}) => {
             photographer:'Tania Andrew'
         },
     ]
-
-
-
     const [openedPhoto, setOpenedPhoto] = React.useState({open:false});
     const handleOpen = (name, avatarImg, bgImg) => setOpenedPhoto({open:!openedPhoto.open, phg:name, avatar:avatarImg, bg:bgImg});
     console.log(openedPhoto);
@@ -73,25 +54,21 @@ const AllPhotos = ({category}) => {
     }
     return (
         <>
-        <div className='   grid  m-auto mb-20 items-center grid-cols-3 xl:grid-cols-1 sm:grid-cols-2 justify-items-center gap-10 lg:gap-10 mt-28 w-[1000px]'>
+        <div className='   grid  m-auto mb-20 items-center grid-cols-4 xl:grid-cols-1 sm:grid-cols-2 justify-items-center  lg:gap-10 mt-28 w-[1000px]'>
         <p className='font-bold text-6xl font-mono  text-gray-800'>
-        All Photos
+        Photos
         </p>
         </div>
-        <div className=' grid m-auto mb-20 items-center grid-cols-3 xl:grid-cols-3 sm:grid-cols-2 justify-items-center gap-7 lg:gap-2 mt-7 w-[1300px]'>
+        <div className=' grid m-auto mb-20 items-center grid-cols-4 xl:grid-cols-4 sm:grid-cols-2 justify-items-center gap-7 lg:gap-2 mt-7 w-[1300px]'>
                     {categories.map((category,i)=>(
                         <>
-                            <BackgroundBlogCardPhoto_I key={i} handleOpen={()=>handleOpen(category.photographer,category.avatar,category.bg )} avatar={category.avatar} bg={category.bg} phg={category.photographer} />
+                            <PhotoPhg key={i} handleOpen={()=>handleOpen(category.photographer,category.avatar,category.bg )} avatar={category.avatar} bg={category.bg} phg={category.photographer} />
                         </>
                     ))}
         </div>
-        <TestImg open={openedPhoto.open} close={closeDialog} avatar={openedPhoto.avatar} name={openedPhoto.phg} image={openedPhoto.bg}/>
+        <HandelPhoto open={openedPhoto.open} close={closeDialog} avatar={openedPhoto.avatar} name={openedPhoto.phg} image={openedPhoto.bg}/>
         </>
     )
 }
 
-export default AllPhotos
-
-
-
-
+export default PhotographerPage_Main

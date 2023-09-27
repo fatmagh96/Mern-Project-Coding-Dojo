@@ -65,6 +65,7 @@ function App() {
           <Route path='/register/photographer' element={<RegisterPhotographer baseUrl={baseUrl} setLoggedUser={setLoggedUser} setIsLogged={(v)=>setIsLogged(v)}/>}/>
           <Route path='/register/client' element={<RegisterClient baseUrl={baseUrl} setLoggedUser={setLoggedUser} setIsLogged={(v)=>setIsLogged(v)}/>}/>
           <Route path='/photographer' element={<PhotographerDashboard baseUrl={baseUrl}/>}/>
+          <Route path='/photographer/:id' element={<PhotographerPage baseUrl={baseUrl}/>}/>
           <Route path='/client' element={<AddBookingTwo baseUrl={baseUrl}/>}/>
           <Route path='/categories/:category' element={<OneCategory baseUrl={baseUrl}/>}/>
 

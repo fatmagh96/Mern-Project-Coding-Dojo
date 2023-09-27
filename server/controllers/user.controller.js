@@ -17,16 +17,16 @@ module.exports = {
         }
         
     },
-    // findOne: (req, res) =>{
-    //     User.findOne({_id:req.params.id}).populate('likes')
-    //     .then(response=> {
-    //         console.log("Database response : ", response);
-    //         res.status(200).json(response)
-    //     })
-    //     .catch(error=>{
-    //         console.log("ERROR: ", error);
-    //         res.status(400).json(error)})
-    // },
+    findOne: (req, res) =>{
+        User.findOne({_id:req.params.id}).populate('likes').populate('posts')
+        .then(response=> {
+            console.log("Database response : ", response);
+            res.status(200).json(response)
+        })
+        .catch(error=>{
+            console.log("ERROR: ", error);
+            res.status(400).json(error)})
+    },
     // create: (req, res)=>{
     //     User.create(req.body)
     //     .then(response=>

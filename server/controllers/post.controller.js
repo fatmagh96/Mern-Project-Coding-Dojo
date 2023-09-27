@@ -87,7 +87,7 @@ module.exports = {
             await Post.findByIdAndUpdate(newPost._id, { $push: { images: newFile._id } });
           }
       
-        //   await User.findByIdAndUpdate(userId, { $push: { posts: newPost._id } });
+          await User.findByIdAndUpdate(userId, { $push: { posts: newPost._id } });
       
           res.status(201).json(newPost);
         } catch (error) {

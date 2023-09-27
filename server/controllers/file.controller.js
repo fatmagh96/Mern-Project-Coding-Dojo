@@ -20,7 +20,7 @@ const uploadFile = async (req, res) => {
 };
 const getFiles = async (req, res)=>{
 try{
-const files = await File.find()
+const files = await File.find().populate('post')
 res.json(files)
 
 }catch(err){

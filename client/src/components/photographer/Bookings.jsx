@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { useParams, useNavigate, Link } from 'react-router-dom'
 import axios from 'axios';
 // import { Card, Typography } from "@material-tailwind/react";
 import {
@@ -25,33 +26,33 @@ import {
 
 const TABLE_HEAD = ["Client", "Category", "Status", "Created At", "Actions"];
 
-const TABLE_ROWS = [
-    {
-        name: "John Michael",
-        job: "Manager",
-        date: "23/04/18",
-    },
-    {
-        name: "Alexa Liras",
-        job: "Developer",
-        date: "23/04/18",
-    },
-    {
-        name: "Laurent Perrier",
-        job: "Executive",
-        date: "19/09/17",
-    },
-    {
-        name: "Michael Levi",
-        job: "Developer",
-        date: "24/12/08",
-    },
-    {
-        name: "Richard Gran",
-        job: "Manager",
-        date: "04/10/21",
-    },
-];
+// const TABLE_ROWS = [
+//     {
+//         name: "John Michael",
+//         job: "Manager",
+//         date: "23/04/18",
+//     },
+//     {
+//         name: "Alexa Liras",
+//         job: "Developer",
+//         date: "23/04/18",
+//     },
+//     {
+//         name: "Laurent Perrier",
+//         job: "Executive",
+//         date: "19/09/17",
+//     },
+//     {
+//         name: "Michael Levi",
+//         job: "Developer",
+//         date: "24/12/08",
+//     },
+//     {
+//         name: "Richard Gran",
+//         job: "Manager",
+//         date: "04/10/21",
+//     },
+// ];
 const Bookings = ({ baseUrl }) => {
     const [bookings, setBookings] = useState([]);
     const [pendingBookings, setPendingBookings] = useState([]);
@@ -86,9 +87,9 @@ const Bookings = ({ baseUrl }) => {
     };
     console.log(acceptedBookings, '😫😫😫😫😫😫')
     return (
-        <div>
+        <div className='w-3/4 mx-auto mt-10'>
             all
-            <Card className="h-full w-full overflow-scroll">
+            <Card className="h-full w-auto overflow-scroll">
                 <table className="w-full min-w-max table-auto text-left">
                     <thead>
                         <tr>
@@ -458,6 +459,11 @@ const Bookings = ({ baseUrl }) => {
                     </tbody>
                 </table>
             </Card>
+            <Link to={'/photographer'}>
+          <button className='"inline-flex mt-4 w-40 items-center px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-blue-gray-300 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition ease-in-out duration-150'>
+           Back
+          </button>
+          </Link> 
         </div>
     )
 }

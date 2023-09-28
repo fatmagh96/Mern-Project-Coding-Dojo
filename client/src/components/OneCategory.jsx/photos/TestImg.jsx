@@ -30,6 +30,7 @@ const TestImg = ({open, close, name, avatar, image}) => {
                                 className="font-medium"
                             >
                                 {/* <Link to={`/photographer/${id}`}>{name}</Link> */}
+                                {name}
                             </Typography>
                             <Typography
                                 variant="small"

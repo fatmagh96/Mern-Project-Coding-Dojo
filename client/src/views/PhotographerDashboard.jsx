@@ -44,7 +44,7 @@ const PhotographerDashboard = ({baseUrl}) => {
           <div className="flex-2">
               <DefaultSidebar/>
           </div>
-            <fieldset className='flex-5 border-2' style={{height:1000, width:1000}}>
+            <div className='flex-5 ' >
                 
                 
                 <div className='flex flex-row items-center justify-between gap-20 my-10 mx-7'>
@@ -57,7 +57,7 @@ const PhotographerDashboard = ({baseUrl}) => {
                     </div>
                   </div>
                     <div className='flex-1'>
-                      <p className='text-m text-center'>{user.description}</p>
+                      <p className='text-sm font-light text-center'>"{user.description}"</p>
                     </div>
                 </div>
                 
@@ -68,7 +68,7 @@ const PhotographerDashboard = ({baseUrl}) => {
                   </div>
                   {/* <ImageCard/> */}
                  <PhotographerPosts/>
-                </fieldset>
+                </div>
             
         </div>
 

@@ -3,24 +3,29 @@ import {Routes, Route, useNavigate} from 'react-router-dom'
 import axios from 'axios'
 import PhotographerDashboard from './views/PhotographerDashboard'
 // import { DefaultSidebar } from './components/photographer/DefaultSidebar'
-import Example from './views/Example'
-import LogIn from './views/LogIn'
+
 import SignUp from './views/SignUp'
-import Test from './views/Test'
+
 import './App.css'
 import Signin from './views/Signin'
 import Home from './views/Home'
 import RegisterPhotographer from './views/RegisterPhotographer'
 import RegisterClient from './views/RegisterClient'
-import NewTest from './views/NewTest'
+
 import { UserContext } from "./context/UserContext";
 import OneCategory from './views/OneCategory'
 import { StickyNavbar } from './components/home_page/Nav'
 import { AddBooking } from './components/client_components/AddBooking'
 import AddBookingTwo from './components/client_components/AddBookingTwo'
 import PhotographerPage from './views/PhotographerPage'
+
+
+import ProfilePhotographer from './components/photographer/ProfilePhotographer'
+
+
+import EditProfile from './components/photographer/EditProfile'
 import DashboardClient from './views/DashboardClient'
-import PhotographerDashboard1 from './views/PhotographerDashboard1'
+import Bookings from './components/photographer/Bookings'
 
 
 function App() {
@@ -72,6 +77,10 @@ function App() {
           <Route path='/photographer/:id' element={<PhotographerPage baseUrl={baseUrl}/>}/>
           <Route path='/client' element={<DashboardClient baseUrl={baseUrl}/>}/>
           <Route path='/categories/:category' element={<OneCategory baseUrl={baseUrl}/>}/>
+
+          <Route path ='/loggedUser' element ={<ProfilePhotographer baseUrl={baseUrl} setLoggedUser={setLoggedUser} setIsLogged={(v)=>setIsLogged(v)} />}/>
+          <Route path ='/users/:id' element ={<EditProfile baseUrl={baseUrl} setLoggedUser={setLoggedUser} setIsLogged={(v)=>setIsLogged(v)} />}/>
+          <Route path = '/bookings/photographer' element = {<Bookings baseUrl={baseUrl} setLoggedUser={setLoggedUser} setIsLogged={(v)=>setIsLogged(v)} />}/>
 
         </Routes>
 

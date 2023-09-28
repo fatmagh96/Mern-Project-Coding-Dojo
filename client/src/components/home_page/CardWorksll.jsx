@@ -7,6 +7,7 @@ import {
     Avatar,
     Tooltip,
 } from "@material-tailwind/react";
+import {BsCamera} from 'react-icons/bs';
 
 export function BlogCardII() {
     return (
@@ -15,20 +16,19 @@ export function BlogCardII() {
                 floated={false}
                 shadow={false}
                 color="transparent"
-                className="m-0 rounded-none"
+                className="m-0 rounded-none h-[300px] w-[300px] flex  justify-center"
             >
-                <img
-                    src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80"
-                    alt="ui/ux review check"
-                    className="p-4 h-[300px] w-[300px] rounded-full object-cover object-center ms-3"
-                />
+<div className="border border-blue-gray-500  p-3 w-56 h-56 bg-blue-gray-500 rounded-full flex justify-center items-center">                    <BsCamera size={150} color="white"/>
+                </div>
+
             </CardHeader>
             <CardBody>
                 <Typography className="text-center" variant="h4" color="blue-gray">
                     Enjoy Your Photoshoot
                 </Typography>
                 <Typography variant="lead" color="gray" className="mt-3 font-normal">
-                    You plan with your photographer, receive tips and reminders, and show up the day of your photoshoot for a unique, fun, hassle-free session!                </Typography>
+                    You plan with your photographer, receive tips and reminders, and show up the day of your photoshoot for a unique, fun, hassle-free session!             
+                </Typography>
             </CardBody>
 
         </Card>

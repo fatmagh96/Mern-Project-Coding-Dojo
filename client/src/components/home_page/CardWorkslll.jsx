@@ -7,6 +7,8 @@ import {
     Avatar,
     Tooltip,
 } from "@material-tailwind/react";
+import { FaPhotoVideo } from 'react-icons/fa';
+
 
 export function BlogCardIII() {
     return (
@@ -15,13 +17,11 @@ export function BlogCardIII() {
                 floated={false}
                 shadow={false}
                 color="transparent"
-                className="m-0 rounded-none"
+                className="m-0 rounded-none h-[300px] w-[300px] flex  justify-center"
             >
-                <img
-                    src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80"
-                    alt="ui/ux review check"
-                    className="p-4 h-[300px] w-[300px] rounded-full object-cover object-center ms-3 text"
-                />
+<div className="border border-blue-gray-500  p-3 w-56 h-56 bg-blue-gray-500 rounded-full flex justify-center items-center">                    <FaPhotoVideo size={150} color="white" />
+                </div>
+
             </CardHeader>
             <CardBody>
                 <Typography className="text-center" variant="h4" color="blue-gray">

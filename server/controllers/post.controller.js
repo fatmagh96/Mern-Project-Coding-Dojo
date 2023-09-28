@@ -136,6 +136,30 @@ module.exports = {
 
     },
 
+    // likePost: async (req, res) => {
+    //     const userToken = req.cookies.userToken;
+    //     const { id: userId } = jwt.verify(userToken, SECRET)
+    //     const post_id = req.params.post_id
+    //     try {
+    //         const post = await Post.find({
+    //             _id: post_id,
+    //             likes: userId,
+    //           });
+    //           if (post.length > 0) {
+    //             return res
+    //               .status(400)
+    //               .json({ msg: "You have already liked this post" });
+    //           }
+    //         const likedPost = await Post.findOneAndUpdate({ _id: post_id },{$push: { likes: userId}},{new: true});
+    //         await User.findByIdAndUpdate(userId, {$push:{likes:likedPost._id}})
+    //         res.status(200).json({message: "post liked succesfully!!"})
+    //     } catch (error) {
+    //         console.log("DATABASE ERROR  :", error);
+    //         res.status(400).json(error)
+    //     }
+
+    // },
+
     likePost: async (req, res) => {
         const userToken = req.cookies.userToken;
         const { id: userId } = jwt.verify(userToken, SECRET)
@@ -143,7 +167,7 @@ module.exports = {
         try {
             const post = await Post.find({
                 _id: post_id,
-                likes: userId,
+                likes: { $in: [userId] }
               });
               if (post.length > 0) {
                 return res
@@ -157,8 +181,8 @@ module.exports = {
             console.log("DATABASE ERROR  :", error);
             res.status(400).json(error)
         }
-
     },
+
     unlikePost: async (req, res) => {
         const userToken = req.cookies.userToken;
         const { id: userId } = jwt.verify(userToken, SECRET)

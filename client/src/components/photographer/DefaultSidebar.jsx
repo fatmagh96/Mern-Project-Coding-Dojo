@@ -1,3 +1,5 @@
+import React from 'react';
+import { useNavigate, Link } from 'react-router-dom'
 import {
     Card,
     Typography,
@@ -15,67 +17,64 @@ import {
     InboxIcon,
     PowerIcon,
 } from "@heroicons/react/24/solid";
-
-import "./photographer.css"
-
+import { CalendarIcon, HomeIcon } from "@heroicons/react/24/outline";
 
 export function DefaultSidebar() {
+    // const navigate = useNavigate()
     return (
-<div className="">
-        <div className="sidebar">
+        <Card className=" sticky top-0  h-[calc(60vh-0rem)] w-full max-w-[20rem] p-4 mt-16 shadow-none ">
+            <List>
+                <ListItem>
+                    <ListItemPrefix>
+                        <HomeIcon className="h-5 w-5" />
+                    </ListItemPrefix>
+                  <Link to={'/'}>Home</Link>
+                </ListItem>
 
-            <Card className="h-[calc(100vh-2rem)] w-full max-w-[20rem] p-4 shadow-xl shadow-blue-gray-900/5 border-2">
-                <div className="mb-2 p-4">
-                    <Typography variant="h5" color="blue-gray">
-                        Sidebar
-                    </Typography>
-                </div>
-                <List>
-                    <ListItem>
-                        <ListItemPrefix>
-                            <PresentationChartBarIcon className="h-5 w-5" />
-                        </ListItemPrefix>
-                        Dashboard
-                    </ListItem>
-                    <ListItem>
-                        <ListItemPrefix>
-                            <ShoppingBagIcon className="h-5 w-5" />
-                        </ListItemPrefix>
-                        E-Commerce
-                    </ListItem>
-                    <ListItem>
-                        <ListItemPrefix>
-                            <InboxIcon className="h-5 w-5" />
-                        </ListItemPrefix>
-                        Inbox
-                        <ListItemSuffix>
-                            <Chip value="14" size="sm" variant="ghost" color="blue-gray" className="rounded-full" />
-                        </ListItemSuffix>
-                    </ListItem>
-                    <ListItem>
-                        <ListItemPrefix>
-                            <UserCircleIcon className="h-5 w-5" />
-                        </ListItemPrefix>
-                        Profile
-                    </ListItem>
-                    <ListItem>
-                        <ListItemPrefix>
-                            <Cog6ToothIcon className="h-5 w-5" />
-                        </ListItemPrefix>
-                        Settings
-                    </ListItem>
-                    <ListItem>
-                        <ListItemPrefix>
-                            <PowerIcon className="h-5 w-5" />
-                        </ListItemPrefix>
-                        Log Out
-                    </ListItem>
-                </List>
-            </Card>
-        </div>
-        <div>
-            {/* <BackgroundBlogCard/> */}
-        </div>
- </div>
+                <ListItem>
+                    <ListItemPrefix>
+                        <UserCircleIcon className="h-5 w-5" />
+                    </ListItemPrefix>
+                  
+                    <Link to={'/loggedUser'}>Profile</Link>
+                </ListItem>
+
+
+                <ListItem>
+                    <ListItemPrefix>
+                        <InboxIcon className="h-5 w-5" />
+                    </ListItemPrefix>
+                    Inbox
+                    <ListItemSuffix>
+                        <Chip value="0" size="sm" variant="ghost" color="blue-gray" className="rounded-full" />
+                    </ListItemSuffix>
+                </ListItem>
+
+                <ListItem>
+                    <ListItemPrefix>
+                        <CalendarIcon className="h-5 w-5" />
+                    </ListItemPrefix>
+                   
+                    <Link to={'/bookings/photographer'}> Bookings</Link>
+                </ListItem>
+
+                <ListItem>
+                    <ListItemPrefix>
+                        <Cog6ToothIcon className="h-5 w-5" />
+                    </ListItemPrefix>
+                    
+          
+                    <Link to={'/users/${user._id}'}>Settings</Link>
+                </ListItem>
+
+                <ListItem>
+                    <ListItemPrefix>
+                        <PowerIcon className="h-5 w-5" />
+                    </ListItemPrefix>
+                    <Link to={'/logout'}>Logout</Link>
+                   
+                </ListItem>
+            </List>
+        </Card>
     );
 }

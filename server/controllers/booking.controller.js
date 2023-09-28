@@ -36,7 +36,20 @@ module.exports = {
         const {id:userId} = jwt.verify(userToken, SECRET)
 
         try {
-            const response = await Booking.find({client:userId}).populate("client")
+            const response = await Booking.find({client:userId}).populate("client").populate("photographer")
+            res.status(200).json(response)
+        }catch(error){
+            console.log("DATABASE ERROR  :", error);
+            res.status(400).json(error)
+        }
+        
+    },
+    findAllBookingsPh : async (req,res) => {
+        const userToken = req.cookies.userToken;
+        const {id:userId} = jwt.verify(userToken, SECRET)
+
+        try {
+            const response = await Booking.find({photographer:userId}).populate("photographer").populate("client")
             res.status(200).json(response)
         }catch(error){
             console.log("DATABASE ERROR  :", error);

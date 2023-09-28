@@ -6,6 +6,8 @@ module.exports = app => {
     app.get('/api/bookings' ,bookingController.findAll)
 
     app.get('/api/bookings/client' ,bookingController.findAllBookingsClient)
+    app.get('/api/bookings/photographer' ,bookingController.findAllBookingsPh)
+
 
     app.get('/api/bookings/:status' ,bookingController.findAllBookingsPhotographer)
 

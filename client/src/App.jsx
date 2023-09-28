@@ -19,6 +19,8 @@ import { StickyNavbar } from './components/home_page/Nav'
 import { AddBooking } from './components/client_components/AddBooking'
 import AddBookingTwo from './components/client_components/AddBookingTwo'
 import PhotographerPage from './views/PhotographerPage'
+import DashboardClient from './views/DashboardClient'
+import PhotographerDashboard1 from './views/PhotographerDashboard1'
 
 
 function App() {
@@ -26,6 +28,7 @@ function App() {
   const baseUrl = 'http://localhost:8000/api/'
   const [loggedUser, setLoggedUser] = useState()
   const [isLogged, setIsLogged] = useState(false)
+  const [role, setRole] = useState("")
 
 
   const logout = () => {
@@ -45,6 +48,7 @@ function App() {
       .then((res) => {
         console.log(res.data,'++++');
         setLoggedUser(res.data)
+        setRole(res.data.role)
         setIsLogged(true)
       })
       .catch((err) => {
@@ -56,7 +60,7 @@ function App() {
   return (
     <>
      <UserContext.Provider value={loggedUser}>
-        <StickyNavbar baseUrl={baseUrl} isLogged={isLogged} logout={logout}/>
+        <StickyNavbar baseUrl={baseUrl} isLogged={isLogged} logout={logout} role={role}/>
         <Routes>
 
           <Route path='/' element={<Home baseUrl={baseUrl} />} />
@@ -66,13 +70,13 @@ function App() {
           <Route path='/register/client' element={<RegisterClient baseUrl={baseUrl} setLoggedUser={setLoggedUser} setIsLogged={(v)=>setIsLogged(v)}/>}/>
           <Route path='/photographer' element={<PhotographerDashboard baseUrl={baseUrl}/>}/>
           <Route path='/photographer/:id' element={<PhotographerPage baseUrl={baseUrl}/>}/>
-          <Route path='/client' element={<AddBookingTwo baseUrl={baseUrl}/>}/>
+          <Route path='/client' element={<DashboardClient baseUrl={baseUrl}/>}/>
           <Route path='/categories/:category' element={<OneCategory baseUrl={baseUrl}/>}/>
 
         </Routes>
 
           {/* <PhotographerPage/> */}
-          {/* <PhotographerDashboard/> */}
+          {/* <PhotographerDashboard1 baseUrl={baseUrl}/> */}
           {/* <Example/> */}
           {/* <LogIn/> */}
           {/* <Signin/> */}

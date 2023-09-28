@@ -30,6 +30,8 @@ const PostFormView = (props) => {
 //     console.error('Error uploading image:', error);
 //   }
 // };
+
+
 const handleImageUpload = async (formData) => {
   try {
     const response = await axios.post('http://localhost:8000/api/posts/',  formData, {withCredentials: true}
@@ -48,7 +50,7 @@ const handleImageUpload = async (formData) => {
       const responseData = response.data;
       const imageUrl = responseData.images[0];
       setUploadedImage(imageUrl);
-      props.close
+      props.close()
     } else {
       alert(`Error uploading image. Server response: ${response.status}`);
       console.error(response.data);

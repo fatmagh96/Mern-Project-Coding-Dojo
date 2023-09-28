@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import {
     Navbar,
@@ -10,7 +10,8 @@ import {
 } from "@material-tailwind/react";
 import { Link } from "react-router-dom";
 
-export function StickyNavbar({baseUrl, isLogged, logout}) {
+export function StickyNavbar({ baseUrl, isLogged, logout, role }) {
+    console.log(role, 'ROLELELELELE')
 
     // const [isLogged, setIsLogged] = useState(false)
 
@@ -27,7 +28,7 @@ export function StickyNavbar({baseUrl, isLogged, logout}) {
     //       });
     //   }, []);
 
-    console.log(isLogged,'😡😡😡😡');
+    console.log(isLogged, '😡😡😡😡');
     const [openNav, setOpenNav] = React.useState(false);
 
     React.useEffect(() => {
@@ -49,7 +50,7 @@ export function StickyNavbar({baseUrl, isLogged, logout}) {
                     
                 </a> */}
             </Typography>
-            
+
         </ul>
     );
 
@@ -63,40 +64,46 @@ export function StickyNavbar({baseUrl, isLogged, logout}) {
                         className="mr-4 cursor-pointer  font-bold  text-gray-800"
                         variant="h4"
                     >
-                       <Link to={'/'}>DreamCatcher</Link>
+                        <Link to={'/'}>DreamCatcher</Link>
                     </Typography>
                     <div className="flex items-center gap-4">
                         {/* <div className="mr-6 hidden lg:block">{navList}</div> */}
-                        {isLogged?
+                        {isLogged ?
                             <>
-                            <Button
-                                variant="gradient"
-                                size="sm"
-                                className="hidden lg:inline-block" onClick={logout}>
-                                Log out
-                        </Button></>
-                        :
+                                {role === 'c' && <Link to="/client" className="hover:underline">My Profile</Link>}
+                                {role === 'p' && <Link to="/photographer" className="hover:underline">My Profile</Link>}
+                                <Button
+                                    variant="gradient"
+                                    size="sm"
+                                    className="hidden lg:inline-block" onClick={logout}>
+                                    Log out
+                                </Button></>
+                            :
 
-                        <>
-                            <Button
-                                variant="gradient"
-                                size="sm"
-                                className="hidden lg:inline-block"
-                            >
-                                <Link to={'/signin'}>Login</Link>
-                            </Button>
-                            <Button
-                                variant="gradient"
-                                size="sm"
-                                className="hidden lg:inline-block"
-                            >
-                                <Link to={'/register'}>Sign Up</Link>
-                            </Button> 
-                        </>
-                        
-                        
-                    
-                    }
+                            <>
+                                <Link to={'/signin'}>
+                                    <Button
+                                        variant="gradient"
+                                        size="sm"
+                                        className="hidden lg:inline-block"
+                                    >
+                                        Login
+                                    </Button>
+                                </Link>
+                                <Link to={'/register'}>
+                                    <Button
+                                        variant="gradient"
+                                        size="sm"
+                                        className="hidden lg:inline-block"
+                                    >
+                                        Sign Up
+                                    </Button>
+                                </Link>
+                            </>
+
+
+
+                        }
                         {/* <IconButton
                             variant="text"
                             className="ml-auto h-6 w-6 text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden"

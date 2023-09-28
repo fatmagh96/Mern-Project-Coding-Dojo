@@ -6,8 +6,11 @@ import {
     Typography,
     Button,
 } from "@material-tailwind/react";
+import { AddBooking } from "../client_components/AddBooking";
+import AddBookingTwo from "../client_components/AddBookingTwo";
 
-export function PhotographerPage_Header() {
+export function PhotographerPage_Header({photographer,country, city}) {
+    console.log(country,'jfsdfkshdfjksdhfsjk545465456')
     return (
         <Card className="  grid  grid-cols-1 xl:grid-cols-1 sm:grid-cols-2 justify-items-center gap-10 lg:gap-10 mt-28 shadow-none ">          
             <CardHeader className="mt-6 object-cover object-center shadow-none" >
@@ -21,7 +24,7 @@ export function PhotographerPage_Header() {
                 <div className="w-auto">
                     <div className="flex justify-center">
                         <Typography variant="h3" color="blue-gray" className="text-center flex mt-5 ">
-                        Ahmed Mohssen
+                        {photographer.firstName} {photographer.lastName}
                         </Typography>   
                     </div>
                     <div className="flex justify-center mt-5 w-full">
@@ -33,7 +36,7 @@ export function PhotographerPage_Header() {
                                 </svg> 
                             </div>                          
                             <Typography variant="h6" color="gray" className="text-center font-light flex mt-3  ">
-                                address mail
+                                {photographer.email}
                             </Typography>
                         </div>
                     
@@ -44,7 +47,7 @@ export function PhotographerPage_Header() {
                                 </svg>
                             </div>
                                 <Typography variant="h6" color="gray" className="text-center font-light flex mt-3 ms-6  ">
-                                    location
+                                    <span>{city}, {country}</span>
                                 </Typography>  
                         </div>
                     </div>
@@ -55,14 +58,13 @@ export function PhotographerPage_Header() {
             </CardHeader>
             <CardBody >
                 <div className="flex gap-4 justify-center mb-6">
-                    <Button>Book</Button>
-                    <Button>Contact</Button>
+                    {/* <Button className="w-[110px]">Book</Button> */}
+                    <AddBookingTwo photographer_id={photographer._id}/>
+                    <Button  className="w-[110px]">Contact</Button>
                 </div>
                 <div>
-                    <Typography className="w-[500px]">
-                        The place is close to Barceloneta Beach and bus stop just 2 min by
-                        walk and near to &quot;Naviglio&quot; where you can enjoy the main
-                        night life in Barcelona.
+                    <Typography className="w-[500px] text-center">
+                        {photographer.description}
                     </Typography>
                 </div>
             </CardBody>

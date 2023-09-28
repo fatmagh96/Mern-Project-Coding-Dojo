@@ -17,7 +17,7 @@ import {
     Typography,
 } from "@material-tailwind/react";
 
-const AddBookingTwo = (props) => {
+const AddBookingTwo = ({photographer_id}) => {
     const [open, setOpen] = React.useState(false);
  
   const handleOpen = () => setOpen(!open);
@@ -45,7 +45,7 @@ const AddBookingTwo = (props) => {
 
     const [booking, setBooking] = useState({
         client: user._id,
-        photographer: "",
+        photographer: photographer_id,
         category: "",
         address: {
             country: "",
@@ -64,7 +64,7 @@ const AddBookingTwo = (props) => {
                 // setBooking({...booking, client:user_copie._id})
                 setBooking(booking)
               
-                
+                handleOpen(false);
             })
             .catch(error => {
                 console.log(error)
@@ -73,18 +73,18 @@ const AddBookingTwo = (props) => {
   return (
     <div>
 
-<Button onClick={handleOpen} variant="gradient">
-        Open Dialog
+<Button className="w-[110px]" onClick={handleOpen}>
+        Book
       </Button>
       <Dialog open={open} handler={handleOpen}>
-      <DialogHeader>Its a simple dialog.</DialogHeader>
+      <DialogHeader>Book Your Photographer</DialogHeader>
       <DialogBody divider>
         <form className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96" onSubmit={e => createBooking(e)}>
 
                         <div className="mb-4 flex flex-col gap-6">
                            
-                            <Input size="lg" label="photographer id" onChange={e => setBooking({ ...booking, photographer: e.target.value })}
-                                value={booking.photographer} />
+                            {/* <Input size="lg" label="photographer id" onChange={e => setBooking({ ...booking, photographer: e.target.value })} */}
+                                {/* value={booking.photographer} /> */}
                            
                             <select
                                 className="block w-full px-4 py-2 border border-gray-400 rounded-lg bg-white focus:outline-none focus:border-gray-500"
@@ -93,6 +93,7 @@ const AddBookingTwo = (props) => {
                                 onChange={(e) => setBooking({ ...booking, category: e.target.value })}
                                 value={booking.category}
                             >   
+                           
                                 <option value="">Choose a category for your event</option>
                                 <option value="Party">Party</option>
                                 <option value="Portrait">Portrait</option>
@@ -100,6 +101,9 @@ const AddBookingTwo = (props) => {
                                 <option value="Food">Food</option>
                                 <option value="Product">Product</option>
                                 <option value="Conference">Conference</option>
+                                <option value="Sports">Sports</option>
+                                <option value="Fashion">Fashion</option>
+                                <option value="Family">Family</option>
                             </select>
                             <Input size="lg" label="country"
                                 onChange={e => setBooking({ ...booking, address: { ...booking.address, country: e.target.value } })}
@@ -125,16 +129,16 @@ const AddBookingTwo = (props) => {
 
                                 </div> */}
 
-                                <button>Sumbit</button>
+                                <Button variant="gradient" color="green">Sumbit</Button>
 
                         </div>
 
 
                     </form>
                     </DialogBody>
-                    <DialogFooter>
-          <p>fuck you</p>
-        </DialogFooter>
+                    {/* <DialogFooter>
+          
+        </DialogFooter> */}
                     </Dialog>
     </div>
   )

@@ -7,8 +7,11 @@ import {
     IconButton,
     Typography,
 } from "@material-tailwind/react";
+import { Link } from 'react-router-dom';
+
 
 const TestImg = ({open, close, name, avatar, image}) => {
+    
     return (
         <>
             <Dialog size="l" open={open} handler={close}>
@@ -26,7 +29,7 @@ const TestImg = ({open, close, name, avatar, image}) => {
                                 color="blue-gray"
                                 className="font-medium"
                             >
-                                {name}
+                                {/* <Link to={`/photographer/${id}`}>{name}</Link> */}
                             </Typography>
                             <Typography
                                 variant="small"
@@ -58,10 +61,11 @@ const TestImg = ({open, close, name, avatar, image}) => {
                 <DialogBody divider={true} className="p-0">
                     <img
                         alt="nature"
-                        className="h-[40rem] w-full object-cover object-center"
+                        className="h-[45rem] w-full object-cover object-center"
                         src={image}
                     />
                 </DialogBody>
+                {/* <DialogFooter/> */}
 
             </Dialog>
         </>

@@ -30,6 +30,17 @@ module.exports = {
 
     },
 
+    findAllById: async (req, res) => {
+        try {
+            const response = await Post.find({postedBy:req.params.id}).populate('postedBy').populate('likes').populate('images')
+            res.status(200).json(response)
+        } catch (error) {
+            console.log("DATABASE ERROR  :", error);
+            res.status(400).json(error)
+        }
+
+    },
+
     findAllPostsPhotographer: async (req, res) => {
         const userToken = req.cookies.userToken;
         const { id: userId } = jwt.verify(userToken, SECRET)

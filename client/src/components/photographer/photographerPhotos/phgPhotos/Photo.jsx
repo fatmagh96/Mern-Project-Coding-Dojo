@@ -5,8 +5,11 @@ import {
 } from "@material-tailwind/react";
 
 export function PhotoPhg({bg, handleOpen}) {
-    const bg_class=`group-hover:scale-110 ease-out duration-300 absolute inset-0 m-0 h-full w-full bg-[url('${bg}')] bg-cover bg-center`
-    
+    console.log(bg,'🦆🦆')
+    // const bg_class=`group-hover:scale-110 ease-out duration-300 absolute inset-0 m-0 h-full w-full bg-[url('${bg}')] bg-cover bg-center`
+    // const bg_class="group-hover:scale-110 ease-out duration-300 absolute inset-0 m-0 h-full w-full bg-[url('http://localhost:8000/images/1695888112546pexels-artem-balashevsky-18394309.jpg')] bg-cover bg-center"
+    // const bg_class = `group-hover:scale-110 ease-out duration-300 absolute inset-0 m-0 h-full w-full bg-url('${bg}') bg-cover bg-center`;
+
     return (
         <Card onClick={handleOpen}
             shadow={false}
@@ -16,7 +19,9 @@ export function PhotoPhg({bg, handleOpen}) {
                 floated={false}
                 shadow={false}
                 color="transparent"
-                className={bg_class}
+                style={{backgroundImage: `url('${bg}')`}}
+                className={`group-hover:scale-110 ease-out duration-300 absolute inset-0 m-0 h-full w-full bg-[url('${bg}')] bg-cover bg-center`}
+
             >
                 <div className="absolute inset-0 h-full w-full bg  group-hover:bg-gradient-to-t from-black/30 via-black/30 " />
             </CardHeader>

@@ -6,17 +6,19 @@ import {
     Avatar,
 } from "@material-tailwind/react";
 
-export function BackgroundBlogCard_I({categoryName}) {
+export function BackgroundBlogCard_I({categoryName, bg}) {
     return (
         <Card
             shadow={false}
-            className="cursor-pointer relative grid h-[30rem] w-80 max-w-[28rem] items-end justify-center overflow-hidden text-center group"
+            className="cursor-pointer relative grid h-[30rem] w-96 max-w-[28rem] items-end justify-center overflow-hidden text-center group"
         >
             <CardHeader
                 floated={false}
                 shadow={false}
                 color="transparent"
-                className="group-hover:scale-110 ease-out duration-300 absolute inset-0 m-0 h-full w-full rounded-none bg-[url('https://images.unsplash.com/photo-1552960562-daf630e9278b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80')] bg-cover bg-center"
+                style={{backgroundImage: `url('${bg}')`}}
+                className={`group-hover:scale-110 ease-out duration-300 absolute inset-0 m-0 h-full w-full bg-[url('${bg}')] bg-cover bg-center`}
+                // className="group-hover:scale-110 ease-out duration-300 absolute inset-0 m-0 h-full w-full rounded-none bg-[url('../../public/categories/Party/Bg_Img/pexels-photo-1540406.jpeg')] bg-cover bg-center"
             >
                 <div className=" absolute inset-0 h-full w-full bg  group-hover:bg-gradient-to-t from-black/30 via-black/30 " />
             </CardHeader>

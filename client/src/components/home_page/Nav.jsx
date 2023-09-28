@@ -55,13 +55,13 @@ export function StickyNavbar({ baseUrl, isLogged, logout, role }) {
     );
 
     return (
-        <div className=" max-h-[768px] w-100] ">
+        <div className=" max-h-[768px] w-full ">
             <Navbar className="sticky top-5 z-10 h-100 max-w-full rounded-none py-4 px-4 lg:px-8 lg:py-4">
-                <div className="flex items-center justify-between text-blue-gray-900">
+                <div className="flex items-center justify-between text-black">
                     <Typography
-                        as="a"
+                        // as="a"
                         href="#"
-                        className="mr-4 cursor-pointer  font-bold  text-gray-800"
+                        className="mr-4 cursor-pointer text-xl ml-3 font-burtons"
                         variant="h4"
                     >
                         <Link to={'/'}>DreamCatcher</Link>
@@ -80,26 +80,31 @@ export function StickyNavbar({ baseUrl, isLogged, logout, role }) {
                                 </Button></>
                             :
 
-                            <>
-                                <Link to={'/signin'}>
-                                    <Button
-                                        variant="gradient"
-                                        size="sm"
-                                        className="hidden lg:inline-block"
-                                    >
-                                        Login
-                                    </Button>
-                                </Link>
-                                <Link to={'/register'}>
-                                    <Button
-                                        variant="gradient"
-                                        size="sm"
-                                        className="hidden lg:inline-block"
-                                    >
-                                        Sign Up
-                                    </Button>
-                                </Link>
-                            </>
+                            <ul  className='flex gap-6 mr-4 text-xl items-center'>
+                                <li>
+                                    <Link to={'/signin'}>
+                                        <div
+                                            // variant="gradient"
+                                            // size="sm"
+                                            className="rounded font-bebas tracking-wide hover:underline underline-offset-4"
+                                        >
+                                            Sign In
+                                        </div>
+                                    </Link>
+
+                                </li>
+                                <li>
+                                    <Link to={'/register'}>
+                                        <div
+                                        
+                                            className="rounded font-bebas tracking-wide py-2 px-3 border border-black hover:bg-black hover:text-white"
+                                        >
+                                            Register
+                                        </div>
+                                    </Link>
+
+                                </li>
+                            </ul>
 
 
 

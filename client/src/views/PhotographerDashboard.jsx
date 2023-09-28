@@ -62,7 +62,7 @@ const PhotographerDashboard = ({baseUrl}) => {
                 </div>
                 
                   
-                  <div className='display flex  justify-between m-4 p-10'>
+                  <div className='display flex  justify-between  p-10'>
                   <h3 className='text-xl text-center mb-4'>All Photos</h3>
                   <DialogCustomAnimation baseUrl={baseUrl}/>
                   </div>

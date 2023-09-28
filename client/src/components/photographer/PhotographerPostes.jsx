@@ -39,9 +39,9 @@ const PhotographerPosts = (props) => {
             <img
               src={post.images[0].path} // Assuming images are stored as an array in the post object
               alt="Post"
-              className="w-full h-90 object-cover"
+              className="w-full h-[400px] object-cover"
             />
-            <div className='mt-4 flex justify-center'>
+            <div className='p-7 flex justify-center cursor-pointer'>
             <TbTrashOff onClick={()=>{
                 deletePic(post._id);
                 navigate('/photographer')}}/>  

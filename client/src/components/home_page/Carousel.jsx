@@ -51,11 +51,33 @@ export function CarouselWithContent() {
                                 type="search"
                                 label="Type here..."
                                 className="pr-20 rounded-m ;"
-                                containerProps={{className: "min-w-[500px] min-h-[40px]   " }}
+                                containerProps={{className: "min-w-[500px] min-h-[40px] " }}
                             />
                             <Button size="m" className="!absolute right-0 rounded-m " color="white" >
                                 Search
                             </Button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div className="absolute  inset-0 grid h-64 w-full ">
+                <div className=" text-center  ">
+                    <div className="flex justify-center gap-1 mt-[225px] ">
+                        <div className="relative flex w-50 backdrop-filter backdrop-blur-sm ">
+                            <p className="font-bold  text-blue-gray-100 text-5xl " >
+                            "Unlock the Beauty of Every Moment 
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div className="absolute  inset-0 grid h-64 w-full ">
+                <div className=" text-center  ">
+                    <div className="flex justify-center gap-1 mt-[300px] ">
+                        <div className="relative flex w-50 backdrop-filter backdrop-blur-sm">
+                            <p className="font-bold text-blue-gray-100 text-5xl " >
+                            Reserve Your Photography Experience Now!"
+                            </p>
                         </div>
                     </div>
                 </div>

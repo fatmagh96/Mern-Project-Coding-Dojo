@@ -36,7 +36,7 @@ export function DefaultSidebar() {
                         <UserCircleIcon className="h-5 w-5" />
                     </ListItemPrefix>
                   
-                    <Link to={'/loggedUser'}>Profile</Link>
+                    <Link to={'/photographer/profile'}>Profile</Link>
                 </ListItem>
 
 
@@ -64,7 +64,8 @@ export function DefaultSidebar() {
                     </ListItemPrefix>
                     
           
-                    <Link to={'/users/${user._id}'}>Settings</Link>
+                    <Link to={'/photographer/edit/${user._id}'}>Settings</Link>
+                    
                 </ListItem>
 
                 <ListItem>

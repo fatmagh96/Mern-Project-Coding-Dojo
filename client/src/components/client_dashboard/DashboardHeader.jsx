@@ -6,7 +6,7 @@ import {
 } from "@material-tailwind/react";
 
 export function CardDefault({user}) {
-    console.log(user,'😶‍🌫️😶‍🌫️')
+    // console.log(user,'😶‍🌫️😶‍🌫️')
     return (
         <Card className="   grid ms-5  grid-cols-5 xl:grid-cols-1  justify-items-start ap-10 lg:gap-10 mt-28 shadow-none ">          
             <CardHeader className="mt-6 mb-10 object-cover object-center shadow-none " >

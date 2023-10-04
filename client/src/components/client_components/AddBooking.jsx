@@ -155,6 +155,9 @@ export function AddBooking({ baseUrl }) {
                                 <option value="Food">Food</option>
                                 <option value="Product">Product</option>
                                 <option value="Conference">Conference</option>
+                                <option value="Sports">Sports</option>
+                                <option value="Fashion">Fashion</option>
+                                <option value="Family">Family</option>
                             </select>
                             <Input size="lg" label="country"
                                 onChange={e => setBooking({ ...booking,client:user_copie._id, address: { ...booking.address, country: e.target.value } })}

@@ -27,7 +27,7 @@ const RegisterPhotographer = ({ baseUrl, setLoggedUser, setIsLogged }) => {
         confirmPassword: "",
         pricePerHour: "",
         role: "p",
-        profilePhoto: ""
+        profilePhoto: "https://th.bing.com/th/id/OIP.EHKlS38MIH4Am9QLr5SoIgHaHa?pid=ImgDet&rs=1"
     })
     const [errors, setErrors] = useState({
         firstName: "",
@@ -66,7 +66,7 @@ const RegisterPhotographer = ({ baseUrl, setLoggedUser, setIsLogged }) => {
     }
   return (
     <div>
-        <NavBar/>
+        {/* <NavBar/> */}
         <div className=' flex pt-10 justify-center h-[1200px] bg-blue-gray-200'>
                 <div className='card h-[1100px] rounded-lg border border-gray-400 flex bg-white mb-5'>
                     <div className='left-card'>

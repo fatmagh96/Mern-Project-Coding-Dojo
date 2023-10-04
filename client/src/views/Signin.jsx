@@ -49,7 +49,7 @@ const Signin = ({baseUrl, setIsLogged}) => {
     }
   return (
     <>
-    <NavBar/>
+    {/* <NavBar/> */}
     <div className='flex pt-10 justify-center h-screen bg-blue-gray-200'>
         <div className='card h-[700px] rounded-lg border border-gray-400 flex bg-white'>
             <div className='right-card'>

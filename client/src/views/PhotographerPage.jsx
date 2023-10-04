@@ -17,8 +17,8 @@ const PhotographerPage = () => {
   useEffect(()=>{
     axios.get('http://localhost:8000/api/users/'+id)
     .then(response=>{
-      console.log(response.data,'😢😢😢')
-      console.log(response.data.address.country,'😢😢😢')
+      // console.log(response.data,'😢😢😢')
+      // console.log(response.data.address.country,'😢😢😢')
       setPhotographer(response.data)
       setCountry(response.data.address.country)
       setCity(response.data.address.city)
@@ -32,10 +32,10 @@ const PhotographerPage = () => {
     // get posts by photographer id
   useEffect(() => {
     // This useEffect will run whenever 'photographer' state changes
-    console.log(photographer._id, '🆔🆔🆔');
+    // console.log(photographer._id, '🆔🆔🆔');
     axios.get('http://localhost:8000/api/posts/photographer/'+id)
     .then(response=>{
-      console.log(response.data, 'hello')
+      // console.log(response.data, 'hello')
       setPosts(response.data)
     })
     .catch(error => {

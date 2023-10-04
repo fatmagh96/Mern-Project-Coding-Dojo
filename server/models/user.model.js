@@ -46,7 +46,8 @@ const UserSchema = new mongoose.Schema({
         required: [true, "type is required"]
     },
     profilePhoto :{
-        type: String
+        type: String,
+        default: "https://th.bing.com/th/id/OIP.EHKlS38MIH4Am9QLr5SoIgHaHa?pid=ImgDet&rs=1"
     },
     bookings : 
         {

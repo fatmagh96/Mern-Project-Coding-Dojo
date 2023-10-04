@@ -6,7 +6,7 @@ const PostForm = ({ onSubmit }) => {
   const [images, setImages] = useState(null);
   const [category, setCategory] = useState('');
   const [imagePreview, setImagePreview] = useState(null);
-  const categories = ["Party", "Portrait", "Wedding", "Food", "Product", "Conference"];
+  const categories = ["Party","Portrait","Wedding","Food","Product","Conference","Sports","Fashion","Family"];
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];

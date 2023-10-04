@@ -1,3 +1,5 @@
+import React, {useState, useEffect} from "react";
+import axios from "axios";
 import {
     Card,
     CardHeader,
@@ -10,13 +12,36 @@ import { AddBooking } from "../client_components/AddBooking";
 import AddBookingTwo from "../client_components/AddBookingTwo";
 
 export function PhotographerPage_Header({photographer,country, city}) {
-    console.log(country,'jfsdfkshdfjksdhfsjk545465456')
+    // console.log(country,'jfsdfkshdfjksdhfsjk545465456')
+
+    // added
+    const [user, setLoggedUser] = useState({})
+    // app.get('/api/loggedUser'
+    useEffect(()=>{
+        axios.get("http://localhost:8000/api/"+'loggedUser', { withCredentials: true })
+        .then(serverResponse=>{
+            console.log(serverResponse.data);
+            // console.log('helloooo??',serverResponse.data._id);
+            setLoggedUser(serverResponse.data)
+            // setJobs(serverResponse.data)
+            // setDeleted(false)
+        })
+        .catch(error=>{
+            console.log(error)
+            // console.log("teststtstesttestetstets");
+        })
+    },[])
+
+    // -------
+
+
     return (
         <Card className="  grid  grid-cols-1 xl:grid-cols-1 sm:grid-cols-2 justify-items-center gap-10 lg:gap-10 mt-28 shadow-none ">          
             <CardHeader className="mt-6 object-cover object-center shadow-none" >
                 <div className="flex justify-center items-center">
                 <img
-                    src="https://images.unsplash.com/photo-1540553016722-983e48a2cd10?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80"
+                    // src="https://images.unsplash.com/photo-1540553016722-983e48a2cd10?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80"
+                    src={photographer.profilePhoto}
                     alt="card-image"
                     className="h-40 w-40  rounded-full object-cover border-4  border-gray-300 p-0.5 "
                 />
@@ -59,7 +84,13 @@ export function PhotographerPage_Header({photographer,country, city}) {
             <CardBody >
                 <div className="flex gap-4 justify-center mb-6">
                     {/* <Button className="w-[110px]">Book</Button> */}
-                    <AddBookingTwo photographer_id={photographer._id}/>
+                    {user.role=='c'?
+                     <AddBookingTwo photographer_id={photographer._id}/>
+                    :
+                    <Button  className="w-[110px]">Book</Button>
+                    }
+                    
+                    {/* <AddBookingTwo photographer_id={photographer._id}/> */}
                     <Button  className="w-[110px]">Contact</Button>
                 </div>
                 <div>

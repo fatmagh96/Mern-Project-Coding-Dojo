@@ -21,11 +21,13 @@ import PhotographerPage from './views/PhotographerPage'
 
 
 import ProfilePhotographer from './components/photographer/ProfilePhotographer'
-
+import ClientProfile from './components/client_dashboard/ClientProfile'
+import ClientEditProfile from './components/client_dashboard/ClientEditProfile'
 
 import EditProfile from './components/photographer/EditProfile'
 import DashboardClient from './views/DashboardClient'
 import Bookings from './components/photographer/Bookings'
+import ClientBook from './components/client_dashboard/ClientBook'
 
 
 function App() {
@@ -51,7 +53,7 @@ function App() {
   useEffect(() => {
     axios.get(baseUrl + 'loggedUser', { withCredentials: true })
       .then((res) => {
-        console.log(res.data,'++++');
+        // console.log(res.data,'++++');
         setLoggedUser(res.data)
         setRole(res.data.role)
         setIsLogged(true)
@@ -61,7 +63,7 @@ function App() {
         //setIsLogged(false)
       });
   }, [isLogged]);
-  console.log("IS LOGGED", isLogged)
+  // console.log("IS LOGGED", isLogged)
   return (
     <>
      <UserContext.Provider value={loggedUser}>
@@ -78,21 +80,16 @@ function App() {
           <Route path='/client' element={<DashboardClient baseUrl={baseUrl}/>}/>
           <Route path='/categories/:category' element={<OneCategory baseUrl={baseUrl}/>}/>
 
-          <Route path ='/loggedUser' element ={<ProfilePhotographer baseUrl={baseUrl} setLoggedUser={setLoggedUser} setIsLogged={(v)=>setIsLogged(v)} />}/>
-          <Route path ='/users/:id' element ={<EditProfile baseUrl={baseUrl} setLoggedUser={setLoggedUser} setIsLogged={(v)=>setIsLogged(v)} />}/>
+          <Route path ='/photographer/profile' element ={<ProfilePhotographer baseUrl={baseUrl} setLoggedUser={setLoggedUser} setIsLogged={(v)=>setIsLogged(v)} />}/>
+          <Route path ='/photographer/edit/:id' element ={<EditProfile baseUrl={baseUrl} setLoggedUser={setLoggedUser} setIsLogged={(v)=>setIsLogged(v)} />}/>
           <Route path = '/bookings/photographer' element = {<Bookings baseUrl={baseUrl} setLoggedUser={setLoggedUser} setIsLogged={(v)=>setIsLogged(v)} />}/>
+          <Route path ='/client/edit/:id' element ={<ClientEditProfile baseUrl={baseUrl} setLoggedUser={setLoggedUser} setIsLogged={(v)=>setIsLogged(v)} />}/>
+          <Route path ='/client/profile' element ={<ClientProfile baseUrl={baseUrl} setLoggedUser={setLoggedUser} setIsLogged={(v)=>setIsLogged(v)} />}/>
+          <Route path = '/bookings/client' element = {<ClientBook baseUrl={baseUrl} setLoggedUser={setLoggedUser} setIsLogged={(v)=>setIsLogged(v)} />}/>
 
         </Routes>
 
-          {/* <PhotographerPage/> */}
-          {/* <PhotographerDashboard1 baseUrl={baseUrl}/> */}
-          {/* <Example/> */}
-          {/* <LogIn/> */}
-          {/* <Signin/> */}
-          {/* <SignUp/> */}
-          {/* <Test/> */}
-          {/* <NewTest/> */}
-          {/* <RegisterPhotographer/> */}
+          
       </UserContext.Provider>
     </>
   )

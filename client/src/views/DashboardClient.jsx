@@ -2,10 +2,11 @@ import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 // import { CardDefault } from '../components/client_dashboard/TestHeader'
 import { ComplexNavbar} from '../components/client_dashboard/NavDashboard'
-import { DefaultSidebar } from '../components/client_dashboard/DashboardSideNav'
+import  DashboardSideNav from '../components/client_dashboard/DashboardSideNav'
 import DashboardMain from '../components/client_dashboard/DashboardMain'
 import { CardDefault } from '../components/client_dashboard/DashboardHeader'
 import { FooterWithSocialLinks } from '../components/home_page/Footer'
+// import DashboardMain from '../components/client_dashboard/DashboardMain'
 
 
 const DashboardClient = ({baseUrl}) => {
@@ -26,22 +27,24 @@ const DashboardClient = ({baseUrl}) => {
       })
   },[])
   return (
-    <div>
-        {/* <ComplexNavbar /> */}
+    <>
+        
         <div className='flex '>
-            <DefaultSidebar/>
-            <div className='ms-7'>
-              <div>
-                <CardDefault user={user}/>
-              </div>
-                <div>
-                  <DashboardMain user={user}/>
-                </div>
-                
-            </div>
+          <div >
+            <DashboardSideNav/>
+          </div>
+
+          <div className='ms-[300px]'>
+            <div className=''>
+              <CardDefault user={user}/>
+             
+            </div>  
+            <DashboardMain baseUrl = {baseUrl}/>
+          </div>
         </div>
-        <FooterWithSocialLinks/>
-    </div>
+
+            <FooterWithSocialLinks/>
+    </>
   )
 }
 

@@ -19,27 +19,27 @@ import {
 
 const AddBookingTwo = ({photographer_id}) => {
     const [open, setOpen] = React.useState(false);
- 
+    console.log(':::::::::😢',photographer_id)
   const handleOpen = () => setOpen(!open);
 
     const currentDate = new Date().toISOString().slice(0, 16);
-    console.log(currentDate, '⏰⏰');
+    // console.log(currentDate, '⏰⏰');
 
     const [user, setLoggedUser] = useState({})
     // get logged user
     useEffect(() => {
         axios.get('http://localhost:8000/api/loggedUser', { withCredentials: true })
             .then(serverResponse => {
-                console.log(serverResponse.data);
-                console.log('helloooo??', serverResponse.data._id);
+                console.log("USER",serverResponse.data);
+                // console.log('helloooo??', serverResponse.data._id);
                 setLoggedUser(serverResponse.data)
-                console.log("logggged",user)
+                // console.log("logggged",user)
                 // setJobs(serverResponse.data)
                 // setDeleted(false)
             })
             .catch(error => {
                 console.log(error)
-                console.log("teststtstesttestetstets");
+                // console.log("teststtstesttestetstets");
             })
     }, [])
 
@@ -55,6 +55,8 @@ const AddBookingTwo = ({photographer_id}) => {
         duration: 1
     })
 
+    
+
     const createBooking = (e) => {
         e.preventDefault()
         console.log(booking,'😡😡😡');
@@ -62,7 +64,7 @@ const AddBookingTwo = ({photographer_id}) => {
             .then(serverResponse => {
                 console.log('data',serverResponse.data);
                 // setBooking({...booking, client:user_copie._id})
-                setBooking(booking)
+                // setBooking(booking)
               
                 handleOpen(false);
             })
@@ -106,7 +108,7 @@ const AddBookingTwo = ({photographer_id}) => {
                                 <option value="Family">Family</option>
                             </select>
                             <Input size="lg" label="country"
-                                onChange={e => setBooking({ ...booking, address: { ...booking.address, country: e.target.value } })}
+                                onChange={e => setBooking({ ...booking, client:user._id, photographer:photographer_id, address: { ...booking.address, country: e.target.value } })}
                                 value={booking.address.country} />
                             <Input size="lg" label="city" onChange={e => setBooking({ ...booking, address: { ...booking.address, city: e.target.value } })}
                                 value={booking.address.city} />
@@ -129,7 +131,7 @@ const AddBookingTwo = ({photographer_id}) => {
 
                                 </div> */}
 
-                                <Button variant="gradient" color="green">Sumbit</Button>
+                                <button>Sumbit</button>
 
                         </div>
 

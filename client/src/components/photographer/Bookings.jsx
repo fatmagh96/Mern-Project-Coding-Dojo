@@ -26,39 +26,13 @@ import {
 
 const TABLE_HEAD = ["Client", "Category", "Status", "Created At", "Actions"];
 
-// const TABLE_ROWS = [
-//     {
-//         name: "John Michael",
-//         job: "Manager",
-//         date: "23/04/18",
-//     },
-//     {
-//         name: "Alexa Liras",
-//         job: "Developer",
-//         date: "23/04/18",
-//     },
-//     {
-//         name: "Laurent Perrier",
-//         job: "Executive",
-//         date: "19/09/17",
-//     },
-//     {
-//         name: "Michael Levi",
-//         job: "Developer",
-//         date: "24/12/08",
-//     },
-//     {
-//         name: "Richard Gran",
-//         job: "Manager",
-//         date: "04/10/21",
-//     },
-// ];
+
 const Bookings = ({ baseUrl }) => {
     const [bookings, setBookings] = useState([]);
     const [pendingBookings, setPendingBookings] = useState([]);
     const [acceptedBookings, setAcceptedBookings] = useState([]);
     const [rejectedBookings, setRejectedBookings] = useState([]);
-    const [currentTabValue, setCurrentTabValue] = useState("pending");
+    // const [currentTabValue, setCurrentTabValue] = useState("pending");
 
     useEffect(() => {
         axios.get(baseUrl + 'bookings/photographer', { withCredentials: true })
@@ -79,17 +53,59 @@ const Bookings = ({ baseUrl }) => {
         const all = bookings;
         const pending = allBookings.filter(booking => booking.status === "pending");
         const accepted = allBookings.filter(booking => booking.status === "accepted");
-        const rejected = allBookings.filter(booking => booking.status === "rejected");
+        const rejected = allBookings.filter(booking => booking.status === "declined");
 
         setPendingBookings(pending);
         setAcceptedBookings(accepted);
         setRejectedBookings(rejected);
     };
-    console.log(acceptedBookings, '😫😫😫😫😫😫')
+    // console.log(acceptedBookings, '😫😫😫😫😫😫')
+
+    const acceptBooking = (id) => {
+        axios.put(baseUrl + 'bookings/' + id, { status: "accepted" }, { withCredentials: true })
+          .then(response => {
+            console.log(response);
+            // After successfully accepting, refresh the bookings
+            axios.get(baseUrl + 'bookings', { withCredentials: true })
+              .then(response => {
+                setBookings(response.data);
+                filterBookings(response.data);
+              })
+              .catch(error => {
+                console.log(error);
+                console.log('Error');
+              });
+          })
+          .catch(error => console.log(error));
+      };
+
+      
+      const decline = (id) => {
+        axios.put(baseUrl + 'bookings/' + id, { status: "declined" }, { withCredentials: true })
+          .then(response => {
+            console.log(response);
+            
+            axios.get(baseUrl + 'bookings', { withCredentials: true })
+              .then(response => {
+                setBookings(response.data);
+                filterBookings(response.data);
+              })
+              .catch(error => {
+                console.log(error);
+                console.log('Error');
+              });
+          })
+          .catch(error => console.log(error));
+      };
+    
+      // Function to handle the tab change
+      const handleTabChange = (value) => {
+        setCurrentTabValue(value);
+      };
     return (
         <div className='w-3/4 mx-auto mt-10'>
-            all
-            <Card className="h-full w-auto overflow-scroll">
+            All
+            <Card className="h-full w-auto overflow-scroll mb-10">
                 <table className="w-full min-w-max table-auto text-left">
                     <thead>
                         <tr>
@@ -170,7 +186,7 @@ const Bookings = ({ baseUrl }) => {
                                             </Tooltip> */}
                                     {bookings.status === "pending" &&
                                         <div className='flex'>
-                                            <Button color='green' onClick={() => accept(_id)}>Accept</Button>
+                                            <Button color='green' onClick={() => acceptBooking(_id)}>Accept</Button>
                                             <Button color='red' onClick={() => decline(_id)}>Decline</Button>
                                         </div>
                                     }
@@ -185,7 +201,7 @@ const Bookings = ({ baseUrl }) => {
 
 
             Pending
-            <Card className="h-full w-full overflow-scroll">
+            <Card className="h-full w-full overflow-scroll mb-10 ">
                 <table className="w-full min-w-max table-auto text-left">
                     <thead>
                         <tr>
@@ -265,7 +281,7 @@ const Bookings = ({ baseUrl }) => {
                                                 </IconButton>
                                             </Tooltip> */}
                                     <div className='flex'>
-                                        <Button color='green' onClick={() => accept(_id)}>Accept</Button>
+                                        <Button color='green' onClick={() => acceptBooking(_id)}>Accept</Button>
                                         <Button color='red' onClick={() => decline(_id)}>Decline</Button>
                                     </div>
                                 </td>
@@ -277,7 +293,7 @@ const Bookings = ({ baseUrl }) => {
             </Card>
 
             Accepted
-            <Card className="h-full w-full overflow-scroll">
+            <Card className="h-full w-full overflow-scroll mb-10">
                 <table className="w-full min-w-max table-auto text-left">
                     <thead>
                         <tr>
@@ -353,7 +369,7 @@ const Bookings = ({ baseUrl }) => {
                                 <td className={classes}>
                                 {bookings.status === "pending" &&
                                         <div className='flex'>
-                                            <Button color='green' onClick={() => accept(_id)}>Accept</Button>
+                                            <Button color='green' onClick={() => acceptBooking(_id)}>Accept</Button>
                                             <Button color='red' onClick={() => decline(_id)}>Decline</Button>
                                         </div>
                                     }
@@ -366,7 +382,7 @@ const Bookings = ({ baseUrl }) => {
             </Card>
 
             <h1>Rejected</h1>
-            <Card className="h-full w-full overflow-scroll">
+            <Card className="h-full w-full overflow-scroll mb-10">
                 <table className="w-full min-w-max table-auto text-left">
                     <thead>
                         <tr>
@@ -448,7 +464,7 @@ const Bookings = ({ baseUrl }) => {
                                     { }
                                     {bookings.status === "pending" &&
                                         <div className='flex'>
-                                            <Button color='green' onClick={() => accept(_id)}>Accept</Button>
+                                            <Button color='green' onClick={() => acceptBooking(_id)}>Accept</Button>
                                             <Button color='red' onClick={() => decline(_id)}>Decline</Button>
                                         </div>
                                     }
@@ -459,6 +475,8 @@ const Bookings = ({ baseUrl }) => {
                     </tbody>
                 </table>
             </Card>
+
+
             <Link to={'/photographer'}>
           <button className='"inline-flex mt-4 w-40 items-center px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-blue-gray-300 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition ease-in-out duration-150'>
            Back

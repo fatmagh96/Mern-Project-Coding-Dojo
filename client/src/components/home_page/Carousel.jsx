@@ -32,14 +32,7 @@ export function CarouselWithContent() {
 
                 </div>
 
-                <div className="relative h-full w-full">
-                    <img
-                        src="./src/assets/home_page-imgs/carousel/pexels-photo-1086586.webp"
-                        alt="image 4"
-                        className="h-full w-full object-cover"
-                    />
-
-                </div>
+ 
             </Carousel>
             <div className="absolute mt-70 inset-0 grid h-full w-full place-items-center">
                 <div className="w-3/4 text-center md:w-2/4 ">

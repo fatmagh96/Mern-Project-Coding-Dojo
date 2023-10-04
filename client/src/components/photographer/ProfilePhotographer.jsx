@@ -38,75 +38,74 @@ const ProfilePhotographer = (props) => {
     <Card className=" w-2/3 m-auto mt-10">
     <div className="container mx-auto pt-10">
     {/* <DefaultSidebar/> */}
-      <h1 className="text-2xl font-semibold mb-4 ml-4">Your Profile Information</h1>
+      <h1 className="text-2xl font-semibold mb-12 ml-4 ">Your Profile Information</h1>
       <div className="space-y-4">
-       
+      
           <div className=' flex justify-between px-6'>
                 <div>
-                <p className=' font-semibold ml-4 mt-4 '>First Name :</p>
+                <p className=' font-semibold mt-4 '>First Name :</p>
                 </div>
-                <div>
-                <p className='flex-start text-lg mr-4  mt-4'>{user.firstName}</p>
+                <div className='w-[600px]'>
+                <p className='flex-start text-lg   mt-4'>{user.firstName}</p>
                 </div>
-               
-            </div>
+          </div>
       
         <div className=' flex justify-between px-6'>
                 <div>
-                <p className=' font-semibold ml-4 mt-4 '>Last Name :</p>
+                <p className=' font-semibold  mt-4 '>Last Name :</p>
                 </div>
-                <div>
-                <p className='flex-start text-lg mr-4  mt-4'>{user.lastName}</p>
+                <div className='w-[600px]'>
+                <p className='flex-start text-lg   mt-4'>{user.lastName}</p>
                 </div>
                
             </div>
        
         <div className=' flex justify-between px-6'>
                 <div>
-                <p className=' font-semibold ml-4 mt-4 '>Country:</p>
+                <p className=' font-semibold  mt-4 '>Country:</p>
                 </div>
-                <div>
-                <p className='flex-start text-lg mr-4  mt-4'>{user.address.country}</p>
+                <div className='w-[600px]'>
+                <p className='flex-start text-lg   mt-4'>{user.address.country}</p>
                 </div>
                
             </div>
       
         <div className=' flex justify-between px-6'>
                 <div>
-                <p className=' font-semibold ml-4 mt-4 '>City :</p>
+                <p className=' font-semibold  mt-4 '>City :</p>
                 </div>
-                <div>
-                <p className='flex-start text-lg mr-4  mt-4'>{user.address.city}</p>
+                <div className='w-[600px]'>
+                <p className='flex-start text-lg   mt-4'>{user.address.city}</p>
                 </div>
                
             </div>
        
         <div className=' flex justify-between px-6'>
                 <div>
-                <p className=' font-semibold mr-4 mt-4 '>Email :</p>
+                <p className=' font-semibold  mt-4 '>Email :</p>
                 </div>
-                <div>
-                <p className='flex-start text-lg ml-4  mt-4'>{user.email}</p>
+                <div className='w-[600px]'>
+                <p className='flex-start text-lg   mt-4'>{user.email}</p>
                 </div>
                
             </div>
      
         <div className=' flex justify-between px-6'>
                 <div>
-                <p className=' font-semibold ml-4 mt-4 '>Price Per Hour $</p>
+                <p className=' font-semibold  mt-4 '>Price Per Hour $</p>
                 </div>
-                <div>
-                <p className='flex-start text-lg mr-4  mt-4'>{user.pricePerHour}</p>
+                <div className='w-[600px]'>
+                <p className='flex-start text-lg   mt-4'>{user.pricePerHour}</p>
                 </div>
                
             </div>
      
 <div className=' flex justify-between px-6'>
                 <div>
-                <p className=' font-semibold ml-4 mt-4 '>Description :</p>
+                <p className=' font-semibold  mt-4 mb-10 '>Description :</p>
                 </div>
-                <div className='w-[500px]'>
-                <p className='flex-start text-lg ml-4  mt-4 mb-10'>{user.description}</p>
+                <div className='w-[600px]'>
+                <p className='flex-start text-lg   mt-4 mb-10'>{user.description}</p>
                 </div>
                
             </div>
@@ -119,7 +118,7 @@ const ProfilePhotographer = (props) => {
            Back
           </Button>
           </Link> 
-          <Link to={'/users/${user._id}'}>
+          <Link to={'/photographer/edit/${user._id}'}>
           <Button className='"inline-flex  w-40 items-center px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition ease-in-out duration-150'>
             Edit
           </Button>

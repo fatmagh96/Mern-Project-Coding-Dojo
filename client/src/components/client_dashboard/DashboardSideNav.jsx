@@ -1,3 +1,5 @@
+import React from 'react';
+import { useNavigate, Link } from 'react-router-dom'
 import {
     Card,
     Typography,
@@ -17,7 +19,8 @@ import {
 } from "@heroicons/react/24/solid";
 import { CalendarIcon, HomeIcon } from "@heroicons/react/24/outline";
 
-export function DefaultSidebar() {
+const DashboardSideNav = (props) => {
+    // const navigate = useNavigate()
     return (
         <Card className=" sticky top-0  h-[calc(60vh-0rem)] w-full max-w-[20rem] p-4 mt-16 shadow-none ">
             <List>
@@ -25,14 +28,15 @@ export function DefaultSidebar() {
                     <ListItemPrefix>
                         <HomeIcon className="h-5 w-5" />
                     </ListItemPrefix>
-                    Home
+                  <Link to={'/'}>Home</Link>
                 </ListItem>
 
                 <ListItem>
                     <ListItemPrefix>
                         <UserCircleIcon className="h-5 w-5" />
                     </ListItemPrefix>
-                    Profile
+                  
+                    <Link to={'/client/profile'}>Profile</Link>
                 </ListItem>
 
 
@@ -50,23 +54,29 @@ export function DefaultSidebar() {
                     <ListItemPrefix>
                         <CalendarIcon className="h-5 w-5" />
                     </ListItemPrefix>
-                    Book
+                   
+                    <Link to={'/bookings/client'}> Book</Link>
                 </ListItem>
 
                 <ListItem>
                     <ListItemPrefix>
                         <Cog6ToothIcon className="h-5 w-5" />
                     </ListItemPrefix>
-                    Settings
+                    
+          
+                    <Link to={'/client/edit/${user._id}'}>Settings</Link>
+                    
                 </ListItem>
 
                 <ListItem>
                     <ListItemPrefix>
                         <PowerIcon className="h-5 w-5" />
                     </ListItemPrefix>
-                    Log Out
+                    <Link to={'/logout'}>Logout</Link>
+                   
                 </ListItem>
             </List>
         </Card>
     );
 }
+export default DashboardSideNav;
